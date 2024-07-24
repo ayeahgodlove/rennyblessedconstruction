@@ -3,15 +3,14 @@ const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
 const { dbAuthenticate } = require("./services/database.config");
-const session = require('express-session');
-
+const session = require("express-session");
 
 require("dotenv").config();
 const passport = require("passport");
 const flash = require("connect-flash");
 
 // Passport config
-require('./config/passport-auth')(passport);
+require("./config/passport-auth")(passport);
 
 const authRoutes = require("./routes/auth");
 
@@ -58,6 +57,16 @@ dbAuthenticate();
 app.get("/", (req, res) => {
   res.render("pages/index");
 });
+app.get("/about-us", (req, res) => {
+  res.render("pages/about", { pageTitle: "About Us", uri: "About" });
+});
+app.get("/services", (req, res) => {
+  res.render("pages/services", { pageTitle: "Services", uri: "Services" });
+});
+app.get("/contact-us", (req, res) => {
+  res.render("pages/contact", { pageTitle: "Contact Us", uri: "Contact" });
+});
+
 
 app.use("/", authRoutes);
 

@@ -9,7 +9,7 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('user', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable("Document", {
+    await queryInterface.createTable("document", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -19,7 +19,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "VisaApplication",
+          model: "visaApplication",
           key: "id",
         },
         onUpdate: "CASCADE",

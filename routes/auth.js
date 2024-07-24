@@ -9,14 +9,13 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-router.post(
-  "/login",
+router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true,
-  })
-);
+  })(req, res, next);
+});
 
 // Register Route
 router.get("/register", (req, res) => {
@@ -25,21 +24,48 @@ router.get("/register", (req, res) => {
 
 router.post("/register", async (req, res) => {
   const { name, email, username, password, role } = req.body;
-  try {
-    const hashedPassword = await bcryptjs.hash(password, 10);
-    await User.create({
-      name,
-      email,
+  let errors = [];
+
+  if (!username || !password || !email || !name) {
+    errors.push({ msg: "Please enter all fields" });
+  }
+
+  if (password.length < 6) {
+    errors.push({ msg: "Password must be at least 6 characters" });
+  }
+
+  if (errors.length > 0) {
+    res.render("register", {
+      errors,
       username,
-      password: hashedPassword,
-      role,
+      password,
+      name,
+      email
     });
-    req.flash("success_msg", "You are now registered and can log in");
-    res.redirect("/login");
-  } catch (error) {
-    console.error(error);
-    req.flash("error_msg", "Registration failed");
-    res.redirect("/register");
+  } else {
+    try {
+      const hashedPassword = await bcryptjs.hash(password, 10);
+      await User.create({
+        name,
+        email,
+        username,
+        password: hashedPassword,
+        role,
+      });
+      req.flash("success_msg", "You are now registered and can log in");
+      res.redirect("/login");
+    } catch (error) {
+      console.error(error);
+      req.flash("error_msg", "Registration failed");
+      // res.redirect("/register");
+      res.render("register", {
+        errors: [{ msg: "An error occurred" }],
+        username,
+        password,
+        name,
+        email,
+      });
+    }
   }
 });
 
