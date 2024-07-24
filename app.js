@@ -2,9 +2,13 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
-const { dbAuthenticate } = require("./config/database.config");
+const { dbAuthenticate } = require("./services/database.config");
+const session = require('express-session');
 
 require("dotenv").config();
+const passport = require("passport");
+const flash = require("connect-flash");
+const authRoutes = require("./routes/auth");
 
 const port = process.env.SERVER_PORT;
 
@@ -17,6 +21,28 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
 
+// Express session middleware
+app.use(
+  session({
+    secret: `${process.env.SESSION_KEY}`,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+// Set global variables for flash messages
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
+
 /**
  * connect to database
  */
@@ -27,6 +53,8 @@ dbAuthenticate();
 app.get("/", (req, res) => {
   res.render("pages/index");
 });
+
+app.use("/", authRoutes);
 
 // Start the server
 app.listen(port, () => {

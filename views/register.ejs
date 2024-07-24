@@ -1,0 +1,43 @@
+<%- include("layout/header") %>
+
+<div class="container py-5">
+  <div class="col-12 col-md-6 mx-md-auto card border-0 shadow-sm p-5">
+    <h1>Register</h1>
+    <form action="/register" method="post">
+      <div>
+        <label for="username" class="form-label">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          class="form-control"
+          required
+        />
+      </div>
+      <div>
+        <label for="password" class="form-label">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="role" class="form-label">Role:</label>
+        <select id="role" name="role" class="form-control">
+          <option value="applicant">Applicant</option>
+          <option value="officer">Officer</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary d-block">Register</button>
+      </div>
+    </form>
+    <p class="form-group mt-2"><a href="/login" class="form-label">Login</a></p>
+  </div>
+</div>
+
+<%- include("layout/footer") %>

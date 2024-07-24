@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const path = require("path");
-const config = require("../New folder/config/config.json");
+const config = require("../config/config.json");
 
 // Determine the environment
 const env = process.env.NODE_ENV || "development";
