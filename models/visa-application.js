@@ -1,8 +1,11 @@
-const { sequelize, DataTypes } = require("../config/database.config");
+const { Model, DataTypes } = require("sequelize");
+const { sequelize } = require("../services/database.config");
 const User = require("./user");
 
 // Define the VisaApplication model
-const VisaApplication = sequelize.define("VisaApplication", {
+class VisaApplication extends Model {}
+
+VisaApplication.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -27,6 +30,11 @@ const VisaApplication = sequelize.define("VisaApplication", {
   reviewDate: {
     type: DataTypes.DATE,
   },
+}, {
+    sequelize,
+    modelName: "VisaApplication",
+    freezeTableName: true,
+    tableName: "visa-application"
 });
 
 User.hasMany(VisaApplication, { foreignKey: 'userId' });

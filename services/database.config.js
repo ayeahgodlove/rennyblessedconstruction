@@ -1,6 +1,9 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const path = require("path");
 const config = require("../config/config.json");
+// const User = require('../models/user');
+// const Application = require('../models/visa-application');
+// const Document = require('../models/document');
 
 // Determine the environment
 const env = process.env.NODE_ENV || "development";
@@ -20,6 +23,10 @@ const sequelize = new Sequelize(
 async function dbAuthenticate() {
   try {
     await sequelize.authenticate();
+    sequelize.sync().then(() => {
+      console.log("Database & tables created!");
+    });
+
     console.log("Connection has been established successfully.");
   } catch (error) {
     console.error("Unable to connect to the database:", error);

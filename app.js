@@ -5,9 +5,14 @@ const bodyParser = require("body-parser");
 const { dbAuthenticate } = require("./services/database.config");
 const session = require('express-session');
 
+
 require("dotenv").config();
 const passport = require("passport");
 const flash = require("connect-flash");
+
+// Passport config
+require('./config/passport-auth')(passport);
+
 const authRoutes = require("./routes/auth");
 
 const port = process.env.SERVER_PORT;

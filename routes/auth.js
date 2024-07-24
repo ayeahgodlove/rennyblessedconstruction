@@ -1,5 +1,7 @@
+const bcryptjs = require("bcryptjs");
 const express = require("express");
 const passport = require("passport");
+const User = require("../models/user");
 const router = express.Router();
 
 // Login Route
@@ -22,10 +24,16 @@ router.get("/register", (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const { username, password, role } = req.body;
+  const { name, email, username, password, role } = req.body;
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    await User.create({ username, password: hashedPassword, role });
+    const hashedPassword = await bcryptjs.hash(password, 10);
+    await User.create({
+      name,
+      email,
+      username,
+      password: hashedPassword,
+      role,
+    });
     req.flash("success_msg", "You are now registered and can log in");
     res.redirect("/login");
   } catch (error) {
