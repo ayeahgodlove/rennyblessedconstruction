@@ -67,8 +67,34 @@ app.get("/contact-us", (req, res) => {
   res.render("pages/contact", { pageTitle: "Contact Us", uri: "Contact" });
 });
 
+app.get("/features", (req, res) => {
+  res.render("pages/feature", { pageTitle: "Features", uri: "Feature" });
+});
+app.get("/countries", (req, res) => {
+  res.render("pages/country", { pageTitle: "Countries", uri: "Country" });
+});
+app.get("/testimonials", (req, res) => {
+  res.render("pages/testimony", {
+    pageTitle: "Testimonials",
+    uri: "Testimonial",
+  });
+});
+app.get("/trainings", (req, res) => {
+  res.render("pages/training", { pageTitle: "Trainings", uri: "Training" });
+});
 
 app.use("/", authRoutes);
+
+// 404 route handler
+app.use((req, res, next) => {
+  res.status(404).render("pages/404", { title: "404 - Page Not Found" });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
 
 // Start the server
 app.listen(port, () => {
