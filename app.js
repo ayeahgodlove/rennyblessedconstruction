@@ -83,6 +83,38 @@ app.get("/trainings", (req, res) => {
   res.render("pages/training", { pageTitle: "Trainings", uri: "Training" });
 });
 
+// admin dashboard
+app.get("/dashboard", (req, res) => {
+  res.render("pages/admin/index");
+});
+
+app.get("/dashboard/visa-categories", (req, res) => {
+  res.render("pages/admin/visa-category");
+});
+
+app.get("/dashboard/visa-applications", (req, res) => {
+  res.render("pages/admin/visa-application");
+});
+
+app.get("/dashboard/offices", (req, res) => {
+  res.render("pages/admin/office");
+});
+app.get("/dashboard/countries", (req, res) => {
+  res.render("pages/admin/country");
+});
+app.get("/dashboard/testimonials", (req, res) => {
+  res.render("pages/admin/testimonial");
+});
+app.get("/dashboard/features", (req, res) => {
+  res.render("pages/admin/feature");
+});
+app.get("/dashboard/trainings", (req, res) => {
+  res.render("pages/admin/training");
+});
+app.get("/dashboard/users", (req, res) => {
+  res.render("pages/admin/user");
+});
+
 app.use("/", authRoutes);
 
 // 404 route handler
