@@ -127,22 +127,22 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto py-0">
-            <a href="/" class="nav-item nav-link active">Home</a>
-            <a href="/about-us" class="nav-item nav-link">About</a>
-            <a href="/services" class="nav-item nav-link">Service</a>
+            <a href="/" class="nav-item nav-link <%= (requestPath === '/') ? 'active' : '' %>">Home</a>
+            <a href="/about-us" class="nav-item nav-link <%= (requestPath === '/about-us') ? 'active' : '' %>">About</a>
+            <a href="/services" class="nav-item nav-link <%= (requestPath === '/services') ? 'active' : '' %>">Service</a>
             <div class="nav-item dropdown">
               <a href="#" class="nav-link" data-bs-toggle="dropdown"
                 ><span class="dropdown-toggle">Pages</span></a
               >
               <div class="dropdown-menu m-0">
-                <a href="/features" class="dropdown-item">Feature</a>
-                <a href="/countries" class="dropdown-item">Countries</a>
-                <a href="/testimonials" class="dropdown-item">Testimonial</a>
-                <a href="/trainings" class="dropdown-item">Training</a>
+                <a href="/features" class="dropdown-item <%= (requestPath === '/features') ? 'active' : '' %>">Feature</a>
+                <a href="/countries" class="dropdown-item <%= (requestPath === '/countries') ? 'active' : '' %>">Countries</a>
+                <a href="/testimonials" class="dropdown-item <%= (requestPath === '/testimonials') ? 'active' : '' %>">Testimonial</a>
+                <a href="/trainings" class="dropdown-item <%= (requestPath === '/trainings') ? 'active' : '' %>">Training</a>
                 <!-- <a href="404" class="dropdown-item">404 Page</a> -->
               </div>
             </div>
-            <a href="/contact-us" class="nav-item nav-link">Contact</a>
+            <a href="/contact-us" class="nav-item nav-link <%= (requestPath === '/contact-us') ? 'active' : '' %>">Contact</a>
           </div>
           <button
             class="btn btn-primary btn-md-square border-secondary mb-3 mb-md-3 mb-lg-0 me-3"

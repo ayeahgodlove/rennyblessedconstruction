@@ -23,6 +23,10 @@ const pagesRouter = require("./routes/pages.route");
 
 const port = process.env.SERVER_PORT;
 
+app.use((req, res, next) => {
+  res.locals.requestPath = req.path;
+  next();
+});
 // Set the view engine to EJS
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));

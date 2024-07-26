@@ -33,34 +33,75 @@ pagesRouter.get("/", async (req, res) => {
   });
 });
 
-// Route to render the pages routes
-pagesRouter.get("/", (req, res) => {
-  res.render("pages/index");
+pagesRouter.get("/about-us", async (req, res) => {
+  const trainings = await trainingsController.getAllTrainings();
+  const countries = await countriesController.getAllCountries();
+  res.render("pages/about", {
+    pageTitle: "About Us",
+    uri: "About",
+    trainings,
+    countries,
+  });
 });
-pagesRouter.get("/about-us", (req, res) => {
-  res.render("pages/about", { pageTitle: "About Us", uri: "About" });
+pagesRouter.get("/services", async (req, res) => {
+  const visaCategories = await visaCategoriesController.getAllVisaCategories();
+  const trainings = await trainingsController.getAllTrainings();
+  const countries = await countriesController.getAllCountries();
+
+  res.render("pages/services", {
+    pageTitle: "Services",
+    uri: "Services",
+    services: visaCategories,
+    trainings,
+    countries,
+  });
 });
-pagesRouter.get("/services", (req, res) => {
-  res.render("pages/services", { pageTitle: "Services", uri: "Services" });
-});
-pagesRouter.get("/contact-us", (req, res) => {
-  res.render("pages/contact", { pageTitle: "Contact Us", uri: "Contact" });
+pagesRouter.get("/contact-us", async (req, res) => {
+  const offices = await officesController.getAllOffices();
+  res.render("pages/contact", {
+    pageTitle: "Contact Us",
+    uri: "Contact",
+    offices,
+  });
 });
 
-pagesRouter.get("/features", (req, res) => {
-  res.render("pages/feature", { pageTitle: "Features", uri: "Feature" });
+pagesRouter.get("/features", async (req, res) => {
+  const features = await featuresController.getAllFeatures();
+  const countries = await countriesController.getAllCountries();
+  res.render("pages/feature", {
+    pageTitle: "Features",
+    uri: "Feature",
+    features,
+    countries,
+  });
 });
-pagesRouter.get("/countries", (req, res) => {
-  res.render("pages/country", { pageTitle: "Countries", uri: "Country" });
+pagesRouter.get("/countries", async (req, res) => {
+  const countries = await countriesController.getAllCountries();
+  const trainings = await trainingsController.getAllTrainings();
+  res.render("pages/country", {
+    pageTitle: "Countries",
+    uri: "Country",
+    countries,
+    trainings,
+  });
 });
-pagesRouter.get("/testimonials", (req, res) => {
+pagesRouter.get("/testimonials", async (req, res) => {
+  const testimonials = await testimonialsController.getAllTestimonials();
   res.render("pages/testimony", {
     pageTitle: "Testimonials",
     uri: "Testimonial",
+    testimonials,
   });
 });
-pagesRouter.get("/trainings", (req, res) => {
-  res.render("pages/training", { pageTitle: "Trainings", uri: "Training" });
+pagesRouter.get("/trainings", async (req, res) => {
+  const countries = await countriesController.getAllCountries();
+  const trainings = await trainingsController.getAllTrainings();
+  res.render("pages/training", {
+    pageTitle: "Trainings",
+    uri: "Training",
+    countries,
+    trainings,
+  });
 });
 
 module.exports = pagesRouter;
