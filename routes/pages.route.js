@@ -5,6 +5,10 @@ const TrainingsController = require("../controllers/trainings.controller");
 const CountriesController = require("../controllers/countries.controller");
 const TestimonialsController = require("../controllers/testimonials.controller");
 const FeaturesController = require("../controllers/features.controller");
+const {
+  ensureAuthenticated,
+} = require("../config/middleware/is-authenticated.middleware");
+const checkRole = require("../config/middleware/is-authorized.middle");
 
 const pagesRouter = express.Router();
 
@@ -103,5 +107,36 @@ pagesRouter.get("/trainings", async (req, res) => {
     trainings,
   });
 });
+
+// visa application page
+pagesRouter.get("/visa-application", async (req, res) => {
+  const offices = await officesController.getAllOffices();
+
+  res.render("pages/visa-application", {
+    pageTitle: "Services",
+    uri: "Services",
+    offices,
+  });
+});
+
+// Protect user routes
+pagesRouter.get(
+  "/applicant-home",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  (req, res) => {
+    res.render("pages/applicant-home");
+  }
+);
+
+
+pagesRouter.get(
+  "/visa-application/apply",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    res.render("pages/404");
+  }
+);
 
 module.exports = pagesRouter;

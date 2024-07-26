@@ -5,26 +5,38 @@ const {
 } = require("../../config/middleware/is-authenticated.middleware");
 const FeaturesController = require("../../controllers/features.controller");
 const { uploadFile } = require("../../services/upload.config");
+const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const featureRouter = express.Router();
 const featuresController = new FeaturesController();
 
-featureRouter.get("/", ensureAuthenticated, async (req, res) => {
-  const features = await featuresController.getAllFeatures();
-  res.render("pages/admin/features", { features });
-});
+featureRouter.get(
+  "/",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  async (req, res) => {
+    const features = await featuresController.getAllFeatures();
+    res.render("pages/admin/features", { features });
+  }
+);
 
-featureRouter.get("/create", ensureAuthenticated, async (req, res) => {
-  res.render("pages/admin/features/create");
-});
+featureRouter.get(
+  "/create",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  async (req, res) => {
+    res.render("pages/admin/features/create");
+  }
+);
 
 featureRouter.post(
   "/create",
   ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
   uploadFile("features").single("imageUrl"),
   async (req, res) => {
     try {
-      let featureData = req.body; 
+      let featureData = req.body;
       if (req.file) {
         featureData.imageUrl = req.file.filename;
       }
@@ -37,19 +49,25 @@ featureRouter.post(
   }
 );
 
-featureRouter.get("/edit/:id", ensureAuthenticated, async (req, res) => {
-  try {
-    const feature = await featuresController.getFeature(req.params.id);
-    res.render("pages/admin/features/edit", { feature });
-  } catch (error) {
-    res.status(500).send(error.message);
+featureRouter.get(
+  "/edit/:id",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  async (req, res) => {
+    try {
+      const feature = await featuresController.getFeature(req.params.id);
+      res.render("pages/admin/features/edit", { feature });
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
   }
-});
+);
 
 // Update Feature API
 featureRouter.post(
   "/edit/:id",
   ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
   uploadFile("features").single("imageUrl"),
   async (req, res) => {
     try {
@@ -57,7 +75,10 @@ featureRouter.post(
       if (req.file) {
         featureData.imageUrl = req.file.filename;
       }
-      await featuresController.editFeature({ id: req.params.id, ...featureData });
+      await featuresController.editFeature({
+        id: req.params.id,
+        ...featureData,
+      });
       res.redirect("/dashboard/features");
     } catch (error) {
       res.status(500).send(error.message);
@@ -66,13 +87,18 @@ featureRouter.post(
 );
 
 // Delete Feature API
-featureRouter.post("/delete/:id", ensureAuthenticated, async (req, res) => {
-  try {
-    await featuresController.deleteFeature(req.params.id);
-    res.redirect("/dashboard/features");
-  } catch (error) {
-    res.status(500).send(error.message);
+featureRouter.post(
+  "/delete/:id",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  async (req, res) => {
+    try {
+      await featuresController.deleteFeature(req.params.id);
+      res.redirect("/dashboard/features");
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
   }
-});
+);
 
 module.exports = featureRouter;

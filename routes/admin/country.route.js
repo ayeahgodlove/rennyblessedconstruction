@@ -5,22 +5,34 @@ const {
 } = require("../../config/middleware/is-authenticated.middleware");
 const CountriesController = require("../../controllers/countries.controller");
 const { uploadFile } = require("../../services/upload.config");
+const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const countryRouter = express.Router();
 const countriesController = new CountriesController();
 
-countryRouter.get("/", ensureAuthenticated, async (req, res) => {
-  const countries = await countriesController.getAllCountries();
-  res.render("pages/admin/countries", { countries });
-});
+countryRouter.get(
+  "/",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  async (req, res) => {
+    const countries = await countriesController.getAllCountries();
+    res.render("pages/admin/countries", { countries });
+  }
+);
 
-countryRouter.get("/create", ensureAuthenticated, async (req, res) => {
-  res.render("pages/admin/countries/create");
-});
+countryRouter.get(
+  "/create",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  async (req, res) => {
+    res.render("pages/admin/countries/create");
+  }
+);
 
 countryRouter.post(
   "/create",
   ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
   uploadFile("countries").fields([
     { name: "imageUrl", maxCount: 1 },
     { name: "flagUrl", maxCount: 1 },
@@ -44,19 +56,25 @@ countryRouter.post(
   }
 );
 
-countryRouter.get("/edit/:id", ensureAuthenticated, async (req, res) => {
-  try {
-    const country = await countriesController.getCountry(req.params.id);
-    res.render("pages/admin/countries/edit", { country });
-  } catch (error) {
-    res.status(500).send(error.message);
+countryRouter.get(
+  "/edit/:id",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  async (req, res) => {
+    try {
+      const country = await countriesController.getCountry(req.params.id);
+      res.render("pages/admin/countries/edit", { country });
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
   }
-});
+);
 
 // Update Country API
 countryRouter.post(
   "/edit/:id",
   ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
   uploadFile("countries").single("imageUrl"),
   async (req, res) => {
     try {
@@ -76,13 +94,18 @@ countryRouter.post(
 );
 
 // Delete Country API
-countryRouter.post("/delete/:id", ensureAuthenticated, async (req, res) => {
-  try {
-    await countriesController.deleteCountry(req.params.id);
-    res.redirect("/dashboard/countries");
-  } catch (error) {
-    res.status(500).send(error.message);
+countryRouter.post(
+  "/delete/:id",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  async (req, res) => {
+    try {
+      await countriesController.deleteCountry(req.params.id);
+      res.redirect("/dashboard/countries");
+    } catch (error) {
+      res.status(500).send(error.message);
+    }
   }
-});
+);
 
 module.exports = countryRouter;

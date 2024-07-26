@@ -20,6 +20,10 @@ const testimonialRouter = require("./routes/admin/testimonials.route");
 const trainingRouter = require("./routes/admin/training.route");
 const visaCaetgoryRouter = require("./routes/admin/visa-categories.route");
 const pagesRouter = require("./routes/pages.route");
+const {
+  ensureAuthenticated,
+} = require("./config/middleware/is-authenticated.middleware");
+const checkRole = require("./config/middleware/is-authorized.middle");
 
 const port = process.env.SERVER_PORT;
 
@@ -38,7 +42,7 @@ app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Static folder
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Express session middleware
 app.use(
@@ -69,19 +73,16 @@ app.use((req, res, next) => {
 dbAuthenticate();
 
 // pages routes
-app.use("/", pagesRouter)
+app.use("/", pagesRouter);
 // admin dashboard
-app.get("/dashboard", (req, res) => {
-  res.render("pages/admin/index");
-});
-
-app.get("/dashboard/visa-applications", (req, res) => {
-  res.render("pages/admin/visa-applications");
-});
-
-app.get("/dashboard/users", (req, res) => {
-  res.render("pages/admin/users");
-});
+app.get(
+  "/dashboard",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  (req, res) => {
+    res.render("pages/admin/index");
+  }
+);
 
 app.use("/dashboard/offices", officeRouter);
 app.use("/dashboard/countries", countryRouter);
@@ -89,6 +90,22 @@ app.use("/dashboard/features", featureRouter);
 app.use("/dashboard/testimonials", testimonialRouter);
 app.use("/dashboard/trainings", trainingRouter);
 app.use("/dashboard/visa-categories", visaCaetgoryRouter);
+app.get(
+  "/dashboard/visa-applications",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  (req, res) => {
+    res.render("pages/admin/visa-applications");
+  }
+);
+app.get(
+  "/dashboard/users",
+  ensureAuthenticated,
+  checkRole(["admin", "super-admin"]),
+  (req, res) => {
+    res.render("pages/admin/users");
+  }
+);
 app.use("/", authRoutes);
 
 // 404 route handler

@@ -5,13 +5,14 @@
     <h1>Register</h1>
     <form action="/register" method="post">
       <div>
-        <label for="name" class="form-label">Name:</label>
+        <label for="fullName" class="form-label">Full Name:</label>
         <input
           type="text"
-          id="name"
-          name="name"
+          id="fullName"
+          name="fullName"
           class="form-control"
           required
+          placeholder="full names"
         />
       </div>
       <div>
@@ -22,6 +23,7 @@
           name="username"
           class="form-control"
           required
+          placeholder="username"
         />
       </div>
       <div>
@@ -32,6 +34,7 @@
           name="email"
           class="form-control"
           required
+          placeholder="email"
         />
       </div>
       <div>
@@ -42,21 +45,35 @@
           name="password"
           class="form-control"
           required
+          placeholder="********"
         />
       </div>
-      <div class="form-group">
+      <div>
+        <label for="confirmPassword" class="form-label">confirmPassword:</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          class="form-control"
+          required
+          placeholder="********"
+        />
+      </div>
+      <!-- <div class="form-group">
         <label for="role" class="form-label">Role:</label>
         <select id="role" name="role" class="form-control">
           <option value="applicant">Applicant</option>
           <option value="officer">Officer</option>
           <option value="admin">Admin</option>
         </select>
-      </div>
-      <div class="form-group mt-3">
+      </div> -->
+      <div class="d-flex justify-content-between align-items-center mt-3">
         <button type="submit" class="btn btn-primary d-block">Register</button>
+        <p class="mt-2"><small>Already have an account?</small>
+          <a href="/login" class="form-label">Login</a>
+        </p>
       </div>
     </form>
-    <p class="form-group mt-2"><a href="/login" class="form-label">Login</a></p>
   </div>
 </div>
 
