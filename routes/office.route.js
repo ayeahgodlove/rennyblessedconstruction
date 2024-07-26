@@ -30,7 +30,7 @@ officeRouter.post(
       }
       await officesController.createOffice(officeData);
       // res.render("pages/admin/offices/create");
-      res.redirect("/pages/admin/offices");
+      res.redirect("/dashboard/offices");
     } catch (error) {
       res.status(500).send(error.message);
     }
@@ -58,11 +58,21 @@ officeRouter.post(
         officeData.imageUrl = req.file.filename;
       }
       await officesController.editOffice({ id: req.params.id, ...officeData });
-      res.redirect("/offices");
+      res.redirect("/dashboard/offices");
     } catch (error) {
       res.status(500).send(error.message);
     }
   }
 );
+
+// Delete Office API
+officeRouter.post("/delete/:id", ensureAuthenticated, async (req, res) => {
+  try {
+    await officesController.deleteOffice(req.params.id);
+    res.redirect("/dashboard/offices");
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
 
 module.exports = officeRouter;
