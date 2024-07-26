@@ -9,7 +9,7 @@ VisaCategory.init(
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
+      autoIncrement: true, 
     },
     visaCategoryName: {
       type: DataTypes.STRING(128),

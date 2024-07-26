@@ -17,6 +17,8 @@ const officeRouter = require("./routes/office.route");
 const countryRouter = require("./routes/country.route");
 const featureRouter = require("./routes/feature.route");
 const testimonialRouter = require("./routes/testimonials.route");
+const trainingRouter = require("./routes/training.route");
+const visaCaetgoryRouter = require("./routes/visa-categories.route");
 
 const port = process.env.SERVER_PORT;
 
@@ -96,17 +98,10 @@ app.get("/dashboard", (req, res) => {
   res.render("pages/admin/index");
 });
 
-app.get("/dashboard/visa-categories", (req, res) => {
-  res.render("pages/admin/visa-categories");
-});
-
 app.get("/dashboard/visa-applications", (req, res) => {
   res.render("pages/admin/visa-applications");
 });
 
-app.get("/dashboard/trainings", (req, res) => {
-  res.render("pages/admin/trainings");
-});
 app.get("/dashboard/users", (req, res) => {
   res.render("pages/admin/users");
 });
@@ -115,6 +110,8 @@ app.use("/dashboard/offices", officeRouter);
 app.use("/dashboard/countries", countryRouter);
 app.use("/dashboard/features", featureRouter);
 app.use("/dashboard/testimonials", testimonialRouter);
+app.use("/dashboard/trainings", trainingRouter);
+app.use("/dashboard/visa-categories", visaCaetgoryRouter);
 app.use("/", authRoutes);
 
 // 404 route handler
