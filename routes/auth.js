@@ -14,6 +14,7 @@ router.post("/login", (req, res, next) => {
     successRedirect: "/dashboard",
     failureRedirect: "/login",
     failureFlash: true,
+    successFlash: 'Login successful'
   })(req, res, next);
 });
 
