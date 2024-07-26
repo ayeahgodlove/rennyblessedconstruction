@@ -14,6 +14,9 @@ require("./config/passport-auth")(passport);
 
 const authRoutes = require("./routes/auth");
 const officeRouter = require("./routes/office.route");
+const countryRouter = require("./routes/country.route");
+const featureRouter = require("./routes/feature.route");
+const testimonialRouter = require("./routes/testimonials.route");
 
 const port = process.env.SERVER_PORT;
 
@@ -101,15 +104,6 @@ app.get("/dashboard/visa-applications", (req, res) => {
   res.render("pages/admin/visa-applications");
 });
 
-app.get("/dashboard/countries", (req, res) => {
-  res.render("pages/admin/countries");
-});
-app.get("/dashboard/testimonials", (req, res) => {
-  res.render("pages/admin/testimonials");
-});
-app.get("/dashboard/features", (req, res) => {
-  res.render("pages/admin/features");
-});
 app.get("/dashboard/trainings", (req, res) => {
   res.render("pages/admin/trainings");
 });
@@ -118,6 +112,9 @@ app.get("/dashboard/users", (req, res) => {
 });
 
 app.use("/dashboard/offices", officeRouter);
+app.use("/dashboard/countries", countryRouter);
+app.use("/dashboard/features", featureRouter);
+app.use("/dashboard/testimonials", testimonialRouter);
 app.use("/", authRoutes);
 
 // 404 route handler

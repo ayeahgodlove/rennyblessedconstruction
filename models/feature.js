@@ -19,7 +19,7 @@ Feature.init(
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
-    },
+    }, 
     icon: {
       type: DataTypes.STRING(255),
       allowNull: false,
