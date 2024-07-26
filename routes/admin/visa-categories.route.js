@@ -2,9 +2,9 @@ const express = require("express");
 
 const {
   ensureAuthenticated,
-} = require("../config/middleware/is-authenticated.middleware");
-const VisaCategoriesController = require("../controllers/visaCategories.controller");
-const { uploadFile } = require("../services/upload.config");
+} = require("../../config/middleware/is-authenticated.middleware");
+const VisaCategoriesController = require("../../controllers/visaCategories.controller");
+const { uploadFile } = require("../../services/upload.config");
 
 const visaCaetgoryRouter = express.Router();
 const visaCategoriesController = new VisaCategoriesController();
@@ -28,7 +28,7 @@ visaCaetgoryRouter.post(
       if (req.file) {
         trainingData.imageUrl = req.file.filename;
       }
-      await visaCategoriesController.createTraining(trainingData);
+      await visaCategoriesController.createVisaCategory(trainingData);
       // res.render("pages/admin/visaCategories/create");
       res.redirect("/dashboard/visa-categories");
     } catch (error) {

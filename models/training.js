@@ -20,7 +20,7 @@ Training.init(
       type: DataTypes.STRING(255),
       allowNull: false,
     },
-    desription: {
+    description: {
       type: DataTypes.TEXT,
       allowNull: false,
     },

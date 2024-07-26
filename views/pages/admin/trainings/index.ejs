@@ -15,6 +15,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Image</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -24,6 +25,13 @@
             <td><%= training.id %></td>
             <td><%= training.trainingName %></td>
             <td><%= training.description %></td>
+            <td>
+              <img
+                height="50"
+                width="50"
+                src="http://localhost:8088/uploads/trainings/<%= training.imageUrl %>"
+              />
+            </td>
             <td>
               <a href="/dashboard/trainings/edit/<%= training.id %>"
                 ><i class="bi bi-pencil-square text-success"></i

@@ -2,9 +2,9 @@ const express = require("express");
 
 const {
   ensureAuthenticated,
-} = require("../config/middleware/is-authenticated.middleware");
-const TestimonialsController = require("../controllers/testimonials.controller");
-const { uploadFile } = require("../services/upload.config");
+} = require("../../config/middleware/is-authenticated.middleware");
+const TestimonialsController = require("../../controllers/testimonials.controller");
+const { uploadFile } = require("../../services/upload.config");
 
 const testimonialRouter = express.Router();
 const testimonialsController = new TestimonialsController();

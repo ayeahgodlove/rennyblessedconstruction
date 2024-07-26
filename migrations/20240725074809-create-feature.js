@@ -24,7 +24,6 @@ module.exports = {
       description: {
         type: Sequelize.TEXT,
         allowNull: false,
-        unique: true,
       },
       icon: {
         type: Sequelize.STRING(255),

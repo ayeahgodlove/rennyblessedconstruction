@@ -2,9 +2,9 @@ const express = require("express");
 
 const {
   ensureAuthenticated,
-} = require("../config/middleware/is-authenticated.middleware");
-const OfficesController = require("../controllers/offices.controller");
-const { uploadFile } = require("../services/upload.config");
+} = require("../../config/middleware/is-authenticated.middleware");
+const OfficesController = require("../../controllers/offices.controller");
+const { uploadFile } = require("../../services/upload.config");
 
 const officeRouter = express.Router();
 const officesController = new OfficesController();

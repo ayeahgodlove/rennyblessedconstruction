@@ -13,12 +13,13 @@ const flash = require("connect-flash");
 require("./config/passport-auth")(passport);
 
 const authRoutes = require("./routes/auth");
-const officeRouter = require("./routes/office.route");
-const countryRouter = require("./routes/country.route");
-const featureRouter = require("./routes/feature.route");
-const testimonialRouter = require("./routes/testimonials.route");
-const trainingRouter = require("./routes/training.route");
-const visaCaetgoryRouter = require("./routes/visa-categories.route");
+const officeRouter = require("./routes/admin/office.route");
+const countryRouter = require("./routes/admin/country.route");
+const featureRouter = require("./routes/admin/feature.route");
+const testimonialRouter = require("./routes/admin/testimonials.route");
+const trainingRouter = require("./routes/admin/training.route");
+const visaCaetgoryRouter = require("./routes/admin/visa-categories.route");
+const pagesRouter = require("./routes/pages.route");
 
 const port = process.env.SERVER_PORT;
 
@@ -63,36 +64,8 @@ app.use((req, res, next) => {
 // Test the connection
 dbAuthenticate();
 
-// Route to render the home page
-app.get("/", (req, res) => {
-  res.render("pages/index");
-});
-app.get("/about-us", (req, res) => {
-  res.render("pages/about", { pageTitle: "About Us", uri: "About" });
-});
-app.get("/services", (req, res) => {
-  res.render("pages/services", { pageTitle: "Services", uri: "Services" });
-});
-app.get("/contact-us", (req, res) => {
-  res.render("pages/contact", { pageTitle: "Contact Us", uri: "Contact" });
-});
-
-app.get("/features", (req, res) => {
-  res.render("pages/feature", { pageTitle: "Features", uri: "Feature" });
-});
-app.get("/countries", (req, res) => {
-  res.render("pages/country", { pageTitle: "Countries", uri: "Country" });
-});
-app.get("/testimonials", (req, res) => {
-  res.render("pages/testimony", {
-    pageTitle: "Testimonials",
-    uri: "Testimonial",
-  });
-});
-app.get("/trainings", (req, res) => {
-  res.render("pages/training", { pageTitle: "Trainings", uri: "Training" });
-});
-
+// pages routes
+app.use("/", pagesRouter)
 // admin dashboard
 app.get("/dashboard", (req, res) => {
   res.render("pages/admin/index");

@@ -23,7 +23,6 @@ module.exports = {
       description: {
         type: Sequelize.TEXT,
         allowNull: false,
-        unique: true,
       },
       imageUrl: {
         type: Sequelize.STRING(255),

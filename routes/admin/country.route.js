@@ -2,9 +2,9 @@ const express = require("express");
 
 const {
   ensureAuthenticated,
-} = require("../config/middleware/is-authenticated.middleware");
-const CountriesController = require("../controllers/countries.controller");
-const { uploadFile } = require("../services/upload.config");
+} = require("../../config/middleware/is-authenticated.middleware");
+const CountriesController = require("../../controllers/countries.controller");
+const { uploadFile } = require("../../services/upload.config");
 
 const countryRouter = express.Router();
 const countriesController = new CountriesController();
@@ -21,14 +21,20 @@ countryRouter.get("/create", ensureAuthenticated, async (req, res) => {
 countryRouter.post(
   "/create",
   ensureAuthenticated,
-  uploadFile("countries").single("imageUrl"),
+  uploadFile("countries").fields([
+    { name: "imageUrl", maxCount: 1 },
+    { name: "flagUrl", maxCount: 1 },
+  ]),
   async (req, res) => {
     try {
       let countryData = req.body;
-      if (req.files) {
-        countryData.imageUrl = req.files[0].filename;
-        countryData.flagUrl = req.files[0].filename;
+      if (req.files["imageUrl"]) {
+        countryData.imageUrl = req.files["imageUrl"][0].filename;
       }
+      if (req.files["flagUrl"]) {
+        countryData.flagUrl = req.files["flagUrl"][0].filename;
+      }
+
       await countriesController.createCountry(countryData);
       // res.render("pages/admin/countries/create");
       res.redirect("/dashboard/countries");
@@ -58,7 +64,10 @@ countryRouter.post(
       if (req.file) {
         countryData.imageUrl = req.file.filename;
       }
-      await countriesController.editCountry({ id: req.params.id, ...countryData });
+      await countriesController.editCountry({
+        id: req.params.id,
+        ...countryData,
+      });
       res.redirect("/dashboard/countries");
     } catch (error) {
       res.status(500).send(error.message);

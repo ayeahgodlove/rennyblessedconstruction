@@ -2,9 +2,9 @@ const express = require("express");
 
 const {
   ensureAuthenticated,
-} = require("../config/middleware/is-authenticated.middleware");
-const FeaturesController = require("../controllers/features.controller");
-const { uploadFile } = require("../services/upload.config");
+} = require("../../config/middleware/is-authenticated.middleware");
+const FeaturesController = require("../../controllers/features.controller");
+const { uploadFile } = require("../../services/upload.config");
 
 const featureRouter = express.Router();
 const featuresController = new FeaturesController();
@@ -24,7 +24,7 @@ featureRouter.post(
   uploadFile("features").single("imageUrl"),
   async (req, res) => {
     try {
-      let featureData = req.body;
+      let featureData = req.body; 
       if (req.file) {
         featureData.imageUrl = req.file.filename;
       }
