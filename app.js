@@ -13,6 +13,7 @@ const flash = require("connect-flash");
 require("./config/passport-auth")(passport);
 
 const authRoutes = require("./routes/auth");
+const officeRouter = require("./routes/office.route");
 
 const port = process.env.SERVER_PORT;
 
@@ -20,10 +21,14 @@ const port = process.env.SERVER_PORT;
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Middleware to serve static files
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
+
+// Static folder
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Express session middleware
 app.use(
@@ -89,32 +94,30 @@ app.get("/dashboard", (req, res) => {
 });
 
 app.get("/dashboard/visa-categories", (req, res) => {
-  res.render("pages/admin/visa-category");
+  res.render("pages/admin/visa-categories");
 });
 
 app.get("/dashboard/visa-applications", (req, res) => {
-  res.render("pages/admin/visa-application");
+  res.render("pages/admin/visa-applications");
 });
 
-app.get("/dashboard/offices", (req, res) => {
-  res.render("pages/admin/office");
-});
 app.get("/dashboard/countries", (req, res) => {
-  res.render("pages/admin/country");
+  res.render("pages/admin/countries");
 });
 app.get("/dashboard/testimonials", (req, res) => {
-  res.render("pages/admin/testimonial");
+  res.render("pages/admin/testimonials");
 });
 app.get("/dashboard/features", (req, res) => {
-  res.render("pages/admin/feature");
+  res.render("pages/admin/features");
 });
 app.get("/dashboard/trainings", (req, res) => {
-  res.render("pages/admin/training");
+  res.render("pages/admin/trainings");
 });
 app.get("/dashboard/users", (req, res) => {
-  res.render("pages/admin/user");
+  res.render("pages/admin/users");
 });
 
+app.use("/dashboard/offices", officeRouter);
 app.use("/", authRoutes);
 
 // 404 route handler
