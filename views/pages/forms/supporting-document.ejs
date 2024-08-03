@@ -1,0 +1,53 @@
+<%- include("../../layout/header") %>
+<main>
+  <div class="container py-5">
+    <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
+      <h1 class="mb-3">Supporting Documents</h1>
+      <form action="/apply-supporting-documents" method="post">
+        <div class="form-group mb-3">
+          <label for="photograph">Photograph:</label>
+          <input
+            type="file"
+            class="form-control"
+            id="photograph"
+            name="photograph"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="passportCopy">Scanned Copy of Passport:</label>
+          <input
+            type="file"
+            class="form-control"
+            id="passportCopy"
+            name="passportCopy"
+            required
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="invitationLetter"
+            >Invitation Letter (if applicable):</label
+          >
+          <input
+            type="file"
+            class="form-control"
+            id="invitationLetter"
+            name="invitationLetter"
+          />
+        </div>
+        <div class="form-group mb-3">
+          <label for="travelInsurance">Travel Insurance (if required):</label>
+          <input
+            type="file"
+            class="form-control"
+            id="travelInsurance"
+            name="travelInsurance"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<%- include("../../layout/footer") %>

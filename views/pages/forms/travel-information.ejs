@@ -1,0 +1,42 @@
+<%- include("../../layout/header") %>
+<main>
+  <div class="container py-5">
+    <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
+      <h1 class="mb-3">Travel Information</h1>
+      <form action="/apply-travel-information" method="post" class="row">
+        <div class="form-group">
+          <label for="visaType">Type of Visa:</label>
+          <select class="form-control" id="visaType" name="visaType" required>
+            <option value="Tourist">Tourist</option>
+            <option value="Student">Student</option>
+            <option value="Work">Work</option>
+            <!-- Add more visa types as needed -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="purposeOfVisit">Purpose of Visit:</label>
+          <input type="text" class="form-control" id="purposeOfVisit" name="purposeOfVisit" required>
+        </div>
+        <div class="form-group">
+          <label for="arrivalDate">Intended Date of Arrival:</label>
+          <input type="date" class="form-control" id="arrivalDate" name="arrivalDate" required>
+        </div>
+        <div class="form-group">
+          <label for="departureDate">Intended Date of Departure:</label>
+          <input type="date" class="form-control" id="departureDate" name="departureDate" required>
+        </div>
+        <div class="form-group">
+          <label for="lengthOfStay">Intended Length of Stay:</label>
+          <input type="text" class="form-control" id="lengthOfStay" name="lengthOfStay" required>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <button type="submit" class="btn btn-primary d-block">
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<%- include("../../layout/footer") %>

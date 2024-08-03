@@ -129,13 +129,186 @@ pagesRouter.get(
   }
 );
 
-
+// personal information
 pagesRouter.get(
-  "/visa-application/apply",
+  "/apply-personal-information",
   ensureAuthenticated,
   checkRole(["applicant"]),
   async (req, res) => {
-    res.render("pages/404");
+    res.render("pages/forms/personal-information");
+  }
+);
+
+pagesRouter.post(
+  "/apply-personal-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    req.session.personalInfo = req.body;
+    res.redirect("/apply-travel-information");
+  }
+);
+
+// travel-information
+pagesRouter.get(
+  "/apply-travel-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    res.render("pages/forms/travel-information");
+  }
+);
+
+pagesRouter.post(
+  "/apply-travel-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    req.session.travelInfo = req.body;
+    res.redirect("/apply-employment-information");
+  }
+);
+
+// employment information
+pagesRouter.get(
+  "/apply-employment-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    res.render("pages/forms/employment-information");
+  }
+);
+
+pagesRouter.post(
+  "/apply-employment-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    req.session.employmentInfo = req.body;
+    // Redirect to a confirmation page or another route
+    res.redirect("/apply-financial-information");
+  }
+);
+
+// financial information
+pagesRouter.get(
+  "/apply-financial-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    res.render("pages/forms/financial-information");
+  }
+);
+
+pagesRouter.post(
+  "/apply-financial-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    req.session.employmentInfo = req.body;
+    // Redirect to a confirmation page or another route
+    res.redirect("/apply-travel-history-information");
+  }
+);
+
+// previos travel information
+pagesRouter.get(
+  "/apply-travel-history-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    res.render("pages/forms/travel-history-information");
+  }
+);
+
+pagesRouter.post(
+  "/apply-travel-history",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    req.session.employmentInfo = req.body;
+    // Redirect to a confirmation page or another route
+    res.redirect("/apply-health-information");
+  }
+);
+
+// Health  information
+pagesRouter.get(
+  "/apply-health-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    res.render("pages/forms/health-information");
+  }
+);
+
+pagesRouter.post(
+  "/apply-health-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    req.session.employmentInfo = req.body;
+    // Redirect to a confirmation page or another route
+    res.redirect("/apply-supporting-documents");
+  }
+);
+
+// Supporting Documents
+pagesRouter.get(
+  "/apply-supporting-documents",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    res.render("pages/forms/supporting-document");
+  }
+);
+
+pagesRouter.post(
+  "/apply-supporting-documents",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    req.session.employmentInfo = req.body;
+    // Redirect to a confirmation page or another route
+    res.redirect("/apply-security-information");
+  }
+);
+
+// Security Informatino
+pagesRouter.get(
+  "/apply-security-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    res.render("pages/forms/security-information");
+  }
+);
+
+pagesRouter.post(
+  "/apply-security-information",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    req.session.employmentInfo = req.body;
+    // Redirect to a confirmation page or another route
+    res.redirect("/apply-digital-signature");
+  }
+);
+
+// Example confirmation route
+pagesRouter.get(
+  "/apply-confirmation",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    // Combine session data or render confirmation page
+    const { personalInfo, travelInfo, employmentInfo } = req.session;
+    console.log(personalInfo, travelInfo, employmentInfo);
+    res.render("pages/forms/confirmation", {
+      personalInfo,
+      travelInfo,
+      employmentInfo,
+    });
   }
 );
 

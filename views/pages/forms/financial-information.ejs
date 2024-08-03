@@ -1,0 +1,46 @@
+<%- include("../../layout/header") %>
+<main>
+  <div class="container py-5">
+    <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
+      <h1 class="mb-3">Financial Information</h1>
+      <form action="/apply-financial-information" method="post" class="row">
+        <div class="form-group mb-3">
+          <label for="proofOfFunds">Proof of Funds:</label>
+          <textarea
+            class="form-control"
+            id="proofOfFunds"
+            name="proofOfFunds"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label for="incomeDetails">Income Details:</label>
+          <textarea
+            class="form-control"
+            id="incomeDetails"
+            name="incomeDetails"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label for="accommodationDetails">Accommodation Details:</label>
+          <textarea
+            class="form-control"
+            id="accommodationDetails"
+            name="accommodationDetails"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <button type="submit" class="btn btn-primary d-block">Next</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<%- include("../../layout/footer") %>
