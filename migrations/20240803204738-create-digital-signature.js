@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up (queryInterface, Sequelize) {
     /**
      * Add altering commands here.
      *
      * Example:
-     * await queryInterface.createTable('user', { id: Sequelize.INTEGER });
+     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable("visa-application", {
-      id: { 
+    await queryInterface.createTable("digital-signature", {
+      id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -22,25 +22,23 @@ module.exports = {
           model: "user",
           key: "id",
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
-      status: {
-        type: Sequelize.ENUM(
-          "submitted",
-          "under review",
-          "approved",
-          "rejected"
-        ),
+
+      declaration: {
+        type: Sequelize.TEXT,
         allowNull: false,
       },
-      submissionDate: {
-        type: Sequelize.DATE,
+      signature: {
+        type: Sequelize.STRING(255),
         allowNull: false,
       },
-      reviewDate: {
+      signatureDate: {
         type: Sequelize.DATE,
+        allowNull: true,
       },
+
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -52,13 +50,13 @@ module.exports = {
     });
   },
 
-  async down(queryInterface, Sequelize) {
+  async down (queryInterface, Sequelize) {
     /**
      * Add reverting commands here.
      *
      * Example:
-     * await queryInterface.dropTable('user');
+     * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable("visa-application");
-  },
+    await queryInterface.dropTable("digital-signature");
+  }
 };

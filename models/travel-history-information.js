@@ -2,10 +2,10 @@ const { Model, DataTypes } = require("sequelize");
 const { sequelize } = require("../services/database.config");
 const User = require("./user");
 
-// Define the VisaApplication model
-class VisaApplication extends Model {}
+// Define the TravelHistoryInformation model
+class TravelHistoryInformation extends Model {}
 
-VisaApplication.init(
+TravelHistoryInformation.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -20,27 +20,24 @@ VisaApplication.init(
         key: "id",
       },
     },
-    status: {
-      type: DataTypes.ENUM("submitted", "under review", "approved", "rejected"),
+    previousVisas: {
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
-    submissionDate: {
-      type: DataTypes.DATE,
+    travelHistory: {
+      type: DataTypes.STRING(255),
       allowNull: false,
-    },
-    reviewDate: {
-      type: DataTypes.DATE,
     },
   },
   {
     sequelize,
-    modelName: "VisaApplication",
+    modelName: "TravelHistoryInformation",
     freezeTableName: true,
-    tableName: "visa-application",
+    tableName: "travel-history-information",
   }
 );
 
-User.hasMany(VisaApplication, { foreignKey: "userId" });
-VisaApplication.belongsTo(User, { foreignKey: "userId" });
+User.hasMany(TravelHistoryInformation, { foreignKey: "userId" });
+TravelHistoryInformation.belongsTo(User, { foreignKey: "userId" });
 
-module.exports = VisaApplication;
+module.exports = TravelHistoryInformation;

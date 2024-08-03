@@ -2,10 +2,10 @@ const { Model, DataTypes } = require("sequelize");
 const { sequelize } = require("../services/database.config");
 const User = require("./user");
 
-// Define the VisaApplication model
-class VisaApplication extends Model {}
+// Define the DigitalSignature model
+class DigitalSignature extends Model {}
 
-VisaApplication.init(
+DigitalSignature.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -20,27 +20,28 @@ VisaApplication.init(
         key: "id",
       },
     },
-    status: {
-      type: DataTypes.ENUM("submitted", "under review", "approved", "rejected"),
+    declaration: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
-    submissionDate: {
-      type: DataTypes.DATE,
+    signature: {
+      type: DataTypes.STRING(255),
       allowNull: false,
     },
-    reviewDate: {
+    signatureDate: {
       type: DataTypes.DATE,
+      allowNull: true,
     },
   },
   {
     sequelize,
-    modelName: "VisaApplication",
+    modelName: "DigitalSignature",
     freezeTableName: true,
-    tableName: "visa-application",
+    tableName: "digital-signature",
   }
 );
 
-User.hasMany(VisaApplication, { foreignKey: "userId" });
-VisaApplication.belongsTo(User, { foreignKey: "userId" });
+User.hasMany(DigitalSignature, { foreignKey: "userId" });
+DigitalSignature.belongsTo(User, { foreignKey: "userId" });
 
-module.exports = VisaApplication;
+module.exports = DigitalSignature;

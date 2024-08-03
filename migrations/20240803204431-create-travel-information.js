@@ -7,10 +7,10 @@ module.exports = {
      * Add altering commands here.
      *
      * Example:
-     * await queryInterface.createTable('user', { id: Sequelize.INTEGER });
+     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable("visa-application", {
-      id: { 
+    await queryInterface.createTable("travel-information", {
+      id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -22,25 +22,35 @@ module.exports = {
           model: "user",
           key: "id",
         },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE",
       },
-      status: {
-        type: Sequelize.ENUM(
-          "submitted",
-          "under review",
-          "approved",
-          "rejected"
-        ),
+      
+      visaType: {
+        type: Sequelize.STRING(128),
         allowNull: false,
       },
-      submissionDate: {
-        type: Sequelize.DATE,
+      purposeOfVisit: {
+        type: Sequelize.TEXT,
         allowNull: false,
       },
-      reviewDate: {
+
+      arrivalDate: {
         type: Sequelize.DATE,
+        allowNull: false,
+        // unique: true,
       },
+      departureDate: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        // unique: true,
+      },
+      durationOfStay: {
+        type: Sequelize.STRING(10),
+        allowNull: false,
+        // unique: true,
+      },
+
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -57,8 +67,8 @@ module.exports = {
      * Add reverting commands here.
      *
      * Example:
-     * await queryInterface.dropTable('user');
+     * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable("visa-application");
+    await queryInterface.dropTable("travel-information");
   },
 };

@@ -155,6 +155,7 @@ pagesRouter.get(
   ensureAuthenticated,
   checkRole(["applicant"]),
   async (req, res) => {
+    console.log(req.session.personalInfo);
     res.render("pages/forms/travel-information");
   }
 );
@@ -175,6 +176,7 @@ pagesRouter.get(
   ensureAuthenticated,
   checkRole(["applicant"]),
   async (req, res) => {
+    console.log(req.session.personalInfo, req.session.travelInfo);
     res.render("pages/forms/employment-information");
   }
 );
@@ -205,7 +207,7 @@ pagesRouter.post(
   ensureAuthenticated,
   checkRole(["applicant"]),
   async (req, res) => {
-    req.session.employmentInfo = req.body;
+    req.session.financialInformation = req.body;
     // Redirect to a confirmation page or another route
     res.redirect("/apply-travel-history-information");
   }
@@ -226,7 +228,7 @@ pagesRouter.post(
   ensureAuthenticated,
   checkRole(["applicant"]),
   async (req, res) => {
-    req.session.employmentInfo = req.body;
+    req.session.travelHistory = req.body;
     // Redirect to a confirmation page or another route
     res.redirect("/apply-health-information");
   }
@@ -247,7 +249,7 @@ pagesRouter.post(
   ensureAuthenticated,
   checkRole(["applicant"]),
   async (req, res) => {
-    req.session.employmentInfo = req.body;
+    req.session.healthInformation = req.body;
     // Redirect to a confirmation page or another route
     res.redirect("/apply-supporting-documents");
   }
@@ -268,7 +270,7 @@ pagesRouter.post(
   ensureAuthenticated,
   checkRole(["applicant"]),
   async (req, res) => {
-    req.session.employmentInfo = req.body;
+    req.session.supportingDocuments = req.body;
     // Redirect to a confirmation page or another route
     res.redirect("/apply-security-information");
   }
@@ -289,11 +291,34 @@ pagesRouter.post(
   ensureAuthenticated,
   checkRole(["applicant"]),
   async (req, res) => {
-    req.session.employmentInfo = req.body;
+    req.session.securityInformation = req.body;
     // Redirect to a confirmation page or another route
     res.redirect("/apply-digital-signature");
   }
 );
+
+
+// digital information
+pagesRouter.get(
+  "/apply-digital-signature",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    res.render("pages/forms/digital-signature");
+  }
+);
+
+pagesRouter.post(
+  "/apply-digital-signature",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    req.session.digitalSignature = req.body;
+    // Redirect to a confirmation page or another route
+    res.redirect("/apply-confirmation");
+  }
+);
+
 
 // Example confirmation route
 pagesRouter.get(
@@ -302,8 +327,27 @@ pagesRouter.get(
   checkRole(["applicant"]),
   async (req, res) => {
     // Combine session data or render confirmation page
-    const { personalInfo, travelInfo, employmentInfo } = req.session;
-    console.log(personalInfo, travelInfo, employmentInfo);
+    const {
+      personalInfo,
+      travelInfo,
+      employmentInfo,
+      financialInformation,
+      travelHistory,
+      healthInformation,
+      securityInformation,
+      supportingDocuments
+    } = req.session;
+    console.log(
+      personalInfo,
+      travelInfo,
+      employmentInfo,
+      financialInformation,
+      travelHistory,
+      healthInformation,
+      securityInformation,
+      supportingDocuments
+    );
+
     res.render("pages/forms/confirmation", {
       personalInfo,
       travelInfo,
