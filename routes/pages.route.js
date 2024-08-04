@@ -23,6 +23,7 @@ const SupporttingInformation = require("../models/support-document");
 const TravelHistoryInformation = require("../models/travel-history-information");
 const DigitalSignature = require("../models/digital-signature");
 const { uploadFile } = require("../services/upload.config");
+const VisaApplication = require("../models/visa-application");
 
 // controllers
 const visaCategoriesController = new VisaCategoriesController();
@@ -706,33 +707,40 @@ pagesRouter.get(
   ensureAuthenticated,
   checkRole(["applicant"]),
   async (req, res) => {
-    // Combine session data or render confirmation page
-    const {
-      personalInfo,
-      travelInfo,
-      employmentInfo,
-      financialInformation,
-      travelHistory,
-      healthInformation,
-      securityInformation,
-      supportingDocuments,
-    } = req.session;
-    console.log(
-      personalInfo,
-      travelInfo,
-      employmentInfo,
-      financialInformation,
-      travelHistory,
-      healthInformation,
-      securityInformation,
-      supportingDocuments
-    );
+    res.render("pages/forms/confirmation");
+  }
+);
 
-    res.render("pages/forms/confirmation", {
-      personalInfo,
-      travelInfo,
-      employmentInfo,
-    });
+pagesRouter.post(
+  "/apply-confirmation",
+  ensureAuthenticated,
+  checkRole(["applicant"]),
+  async (req, res) => {
+    const userId = req.user.id;
+    const status = "submitted";
+    const submissionDate = Date.now();
+
+    try {
+      const existingVisaApplication = await VisaApplication.findOne({
+        where: {
+          userId: userId,
+        },
+      });
+
+      if (existingVisaApplication) {
+        await existingVisaApplication.update(req.body);
+        req.flash("success_msg", "Record Already Exists!");
+      } else {
+        await VisaApplication.create({
+          userId,
+          status,
+          submissionDate,
+        });
+        req.flash("success_msg", "Information Saved!");
+      }
+
+      res.render("pages/forms/confirmation");
+    } catch (err) {}
   }
 );
 

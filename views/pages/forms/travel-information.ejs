@@ -5,7 +5,7 @@
     <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
       <h1 class="mb-3">Travel Information</h1>
       <form action="/apply-travel-information" method="post" class="row">
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="visaType">Type of Visa:</label>
           <select class="form-control" id="visaType" name="visaType" required>
             <option value="Tourist" <%= travelInfo.visaType === 'Tourist' ? 'selected' : '' %>>Tourist</option>
@@ -14,7 +14,7 @@
             <!-- Add more visa types as needed  -->
           </select>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="purposeOfVisit">Purpose of Visit:</label>
           <input
             type="text"
@@ -25,7 +25,7 @@
             required
           />
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="arrivalDate">Intended Date of Arrival:</label>
           <input
             type="date"
@@ -36,7 +36,7 @@
             value="<%= travelInfo.arrivalDate.toISOString().split('T')[0] %>"
           />
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="departureDate">Intended Date of Departure:</label>
           <input
             type="date"
@@ -47,7 +47,7 @@
             value="<%= travelInfo.departureDate.toISOString().split('T')[0] %>"
           />
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
           <label for="durationOfStay">Intended Length of Stay:</label>
           <input
             type="text"

@@ -2,19 +2,18 @@
 <main>
   <div class="container py-5">
     <%- include("../../layout/navbar") %>
-    <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
-      <h1 class="mb-3">Personal Information</h1>
-      <pre><%= JSON.stringify(personalInfo) %> e</pre>
+    <div class="col-12 col-md-10 mx-md-auto card border-0 shadow-sm p-5 mb-3">
+      <h5 class="mb-3">Attention !!!</h5>
+      Please re-navigate through each tab to review and verify that all your
+      information is correctly entered. Ensuring the accuracy of your data is
+      crucial for the successful processing of your application. Thank you!
     </div>
 
-    <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
-      <h1 class="mb-3">Travel Information</h1>
-    
-    </div>
-
-    <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
-      <h1 class="mb-3">Employment Information</h1>
-    
+    <div class="col-12 col-md-10 mx-md-auto card border-0 shadow-sm p-5 mb-3">
+      <h5 class="mb-3">Click here to submit your application</h5>
+      <form action="/apply-confirmation" method="post">
+        <button class="btn btn-primary btn-block">Save Changes</button>
+      </form>
     </div>
   </div>
 </main>

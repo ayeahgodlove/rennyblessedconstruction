@@ -1,6 +1,7 @@
 <%- include("../../layout/header") %>
 <main>
   <div class="container py-5">
+    <%- include("../../layout/navbar") %>
     <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
       <h2>Declaration and Signature</h2>
       <form action="/apply-digital-signature" method="post">
@@ -25,6 +26,7 @@
             id="signature"
             name="signature"
             required
+            value="<%= digitalSignature.signature %>"
           />
         </div>
         <div class="form-group mb-3">
@@ -35,6 +37,7 @@
             id="signatureDate"
             name="signatureDate"
             required
+            value="<%= digitalSignature.signatureDate.toISOString().split('T')[0] %>"
           />
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

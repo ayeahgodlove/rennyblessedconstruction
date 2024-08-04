@@ -2,79 +2,88 @@
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a
-        class="nav-link <%= (requestPath === '/apply-personal-information') ? 'active' : '' %>"
+        class="nav-link h6 <%= (requestPath === '/apply-personal-information') ? 'active' : '' %>"
         aria-current="page"
         href="/apply-personal-information"
-        >Personal...</a
+        >Step 1</a
       >
     </li>
     <li class="nav-item">
       <a
-        class="nav-link <%= (requestPath === '/apply-travel-information') ? 'active' : '' %>"
+        class="nav-link h6 <%= (requestPath === '/apply-travel-information') ? 'active' : '' %>"
         href="/apply-travel-information"
-        >Travel...</a
+        >Step 2</a
       >
     </li>
     <li class="nav-item">
       <a
-        class="nav-link <%= (requestPath === '/apply-employment-information') ? 'active' : '' %>"
+        class="nav-link h6 <%= (requestPath === '/apply-employment-information') ? 'active' : '' %>"
         href="/apply-employment-information"
-        >Employment...</a
+        >Step 3</a
       >
     </li>
     <li class="nav-item">
       <a
-        class="nav-link <%= (requestPath === '/apply-financial-information') ? 'active' : '' %>"
+        class="nav-link h6 <%= (requestPath === '/apply-financial-information') ? 'active' : '' %>"
         href="/apply-financial-information"
         tabindex="-1"
         aria-disabled="true"
-        >Financial...</a
+        >Step 4</a
       >
     </li>
     <li class="nav-item">
       <a
-        class="nav-link <%= (requestPath === '/apply-health-information') ? 'active' : '' %>"
+        class="nav-link h6 <%= (requestPath === '/apply-health-information') ? 'active' : '' %>"
         href="/apply-health-information"
         tabindex="-1"
         aria-disabled="true"
-        >Health...</a
+        >Step 5</a
       >
     </li>
     <li class="nav-item">
       <a
-        class="nav-link <%= (requestPath === '/apply-security-information') ? 'active' : '' %>"
+        class="nav-link h6 <%= (requestPath === '/apply-security-information') ? 'active' : '' %>"
         href="/apply-security-information"
         tabindex="-1"
         aria-disabled="true"
-        >Security...</a
+        >Step 6</a
       >
     </li>
     <li class="nav-item">
       <a
-        class="nav-link <%= (requestPath === '/apply-travel-history-information') ? 'active' : '' %>"
+        class="nav-link h6 <%= (requestPath === '/apply-travel-history-information') ? 'active' : '' %>"
         href="/apply-travel-history-information"
         tabindex="-1"
         aria-disabled="true"
-        >Travel History</a
+        >Step 7</a
       >
     </li>
     <li class="nav-item">
       <a
-        class="nav-link <%= (requestPath === '/apply-supporting-documents') ? 'active' : '' %>"
+        class="nav-link h6 <%= (requestPath === '/apply-supporting-documents') ? 'active' : '' %>"
         href="/apply-supporting-documents"
         tabindex="-1"
         aria-disabled="true"
-        >Documents</a
+        >Step 8</a
       >
     </li>
     <li class="nav-item">
       <a
-        class="nav-link <%= (requestPath === '/apply-digital-signature') ? 'active' : '' %>"
+        class="nav-link h6 <%= (requestPath === '/apply-digital-signature') ? 'active' : '' %>"
         href="/apply-digital-signature"
         tabindex="-1"
         aria-disabled="true"
-        >Signature</a
+        >Step 9</a
       >
     </li>
+    <li class="nav-item">
+        <a
+          class="nav-link h6 <%= (requestPath === '/apply-confirmation') ? 'active' : '' %>"
+          href="/apply-confirmation"
+          tabindex="-1"
+          aria-disabled="true"
+          >Confirmation</a
+        >
+      </li>
   </ul>
 </div>
