@@ -37,11 +37,11 @@ visaCaetgoryRouter.post(
   uploadImage("visa-categories").single("imageUrl"),
   async (req, res) => {
     try {
-      let trainingData = req.body;
+      let visaCategoryData = req.body;
       if (req.file) {
-        trainingData.imageUrl = req.file.filename;
+        visaCategoryData.imageUrl = req.file.filename;
       }
-      await visaCategoriesController.createVisaCategory(trainingData);
+      await visaCategoriesController.createVisaCategory(visaCategoryData);
       // res.render("pages/admin/visaCategories/create");
       res.redirect("/dashboard/visa-categories");
     } catch (error) {
@@ -56,17 +56,17 @@ visaCaetgoryRouter.get(
   checkRole(["admin", "super-admin"]),
   async (req, res) => {
     try {
-      const training = await visaCategoriesController.getTraining(
+      const visaCategory = await visaCategoriesController.getVisaCategory(
         req.params.id
       );
-      res.render("pages/admin/visa-categories/edit", { training });
+      res.render("pages/admin/visa-categories/edit", { visaCategory });
     } catch (error) {
       res.status(500).send(error.message);
     }
   }
 );
 
-// Update Training API
+// Update VisaCategory API
 visaCaetgoryRouter.post(
   "/edit/:id",
   ensureAuthenticated,
@@ -74,13 +74,13 @@ visaCaetgoryRouter.post(
   uploadImage("visaCategories").single("imageUrl"),
   async (req, res) => {
     try {
-      const trainingData = req.body;
+      const visaCategoryData = req.body;
       if (req.file) {
-        trainingData.imageUrl = req.file.filename;
+        visaCategoryData.imageUrl = req.file.filename;
       }
-      await visaCategoriesController.editTraining({
+      await visaCategoriesController.editVisaCategory({
         id: req.params.id,
-        ...trainingData,
+        ...visaCategoryData,
       });
       res.redirect("/dashboard/visa-categories");
     } catch (error) {
@@ -89,14 +89,14 @@ visaCaetgoryRouter.post(
   }
 );
 
-// Delete Training API
+// Delete VisaCategory API
 visaCaetgoryRouter.post(
   "/delete/:id",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
   async (req, res) => {
     try {
-      await visaCategoriesController.deleteTraining(req.params.id);
+      await visaCategoriesController.deleteVisaCategory(req.params.id);
       res.redirect("/dashboard/visa-categories");
     } catch (error) {
       res.status(500).send(error.message);

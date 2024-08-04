@@ -12,7 +12,7 @@
       <!-- Vertical Form -->
       <form
         class="row g-3"
-        action="/dashboard/visa-categories/create"
+        action="/dashboard/visa-categories/edit/<%= visaCategory.id %>"
         method="post"
         enctype="multipart/form-data"
       >
@@ -35,8 +35,7 @@
             name="description"
             class="form-control"
             id="description"
-            value="<%= visaCategory.description %>"
-          ></textarea>
+          ><%= visaCategory.description %></textarea>
         </div>
         <div class="col-12">
           <label for="imageUrl" class="form-label">Image</label>

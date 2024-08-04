@@ -24,6 +24,7 @@ const {
   ensureAuthenticated,
 } = require("./config/middleware/is-authenticated.middleware");
 const checkRole = require("./config/middleware/is-authorized.middle");
+const visaApplicationRouter = require("./routes/admin/visa-application.route");
 
 const port = process.env.SERVER_PORT;
 
@@ -93,14 +94,15 @@ app.use("/dashboard/features", featureRouter);
 app.use("/dashboard/testimonials", testimonialRouter);
 app.use("/dashboard/trainings", trainingRouter);
 app.use("/dashboard/visa-categories", visaCaetgoryRouter);
-app.get(
-  "/dashboard/visa-applications",
-  ensureAuthenticated,
-  checkRole(["admin", "super-admin"]),
-  (req, res) => {
-    res.render("pages/admin/visa-applications");
-  }
-);
+app.use("/dashboard/visa-applications", visaApplicationRouter);
+// app.get(
+//   "/dashboard/visa-applications", 
+//   ensureAuthenticated,
+//   checkRole(["admin", "super-admin"]),
+//   (req, res) => {
+//     res.render("pages/admin/visa-applications");
+//   }
+// );
 app.get(
   "/dashboard/users",
   ensureAuthenticated,

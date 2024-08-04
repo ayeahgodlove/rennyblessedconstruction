@@ -10,7 +10,7 @@
   <div class="card py-5">
     <div class="card-body">
       <!-- Vertical Form -->
-      <form class="row g-3" action="/dashboard/offices/create" method="post" enctype="multipart/form-data">
+      <form class="row g-3" action="/dashboard/offices/edit/<%= office.id %>" method="post" enctype="multipart/form-data">
         <div class="col-12">
           <label for="officeName" class="form-label">Office Name</label>
           <input type="text" class="form-control" name="officeName" id="officeName" value="<%= office.officeName %>" placeholder="office name" />
