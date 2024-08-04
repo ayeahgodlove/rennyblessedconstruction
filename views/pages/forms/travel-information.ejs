@@ -1,38 +1,65 @@
 <%- include("../../layout/header") %>
 <main>
   <div class="container py-5">
+    <%- include("../../layout/navbar") %>
     <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
       <h1 class="mb-3">Travel Information</h1>
       <form action="/apply-travel-information" method="post" class="row">
         <div class="form-group">
           <label for="visaType">Type of Visa:</label>
           <select class="form-control" id="visaType" name="visaType" required>
-            <option value="Tourist">Tourist</option>
-            <option value="Student">Student</option>
-            <option value="Work">Work</option>
+            <option value="Tourist" <%= travelInfo.visaType === 'Tourist' ? 'selected' : '' %>>Tourist</option>
+            <option value="Student" <%= travelInfo.visaType === 'Student' ? 'selected' : '' %>>Student</option>
+            <option value="Work" <%= travelInfo.visaType === 'Work' ? 'selected' : '' %>>Work</option>
             <!-- Add more visa types as needed  -->
           </select>
         </div>
         <div class="form-group">
           <label for="purposeOfVisit">Purpose of Visit:</label>
-          <input type="text" class="form-control" id="purposeOfVisit" name="purposeOfVisit" required>
+          <input
+            type="text"
+            class="form-control"
+            id="purposeOfVisit"
+            name="purposeOfVisit"
+            value="<%= travelInfo.purposeOfVisit %>"
+            required
+          />
         </div>
         <div class="form-group">
           <label for="arrivalDate">Intended Date of Arrival:</label>
-          <input type="date" class="form-control" id="arrivalDate" name="arrivalDate" required>
+          <input
+            type="date"
+            class="form-control"
+            id="arrivalDate"
+            name="arrivalDate"
+            required
+            value="<%= travelInfo.arrivalDate.toISOString().split('T')[0] %>"
+          />
         </div>
         <div class="form-group">
           <label for="departureDate">Intended Date of Departure:</label>
-          <input type="date" class="form-control" id="departureDate" name="departureDate" required>
+          <input
+            type="date"
+            class="form-control"
+            id="departureDate"
+            name="departureDate"
+            required
+            value="<%= travelInfo.departureDate.toISOString().split('T')[0] %>"
+          />
         </div>
         <div class="form-group">
           <label for="durationOfStay">Intended Length of Stay:</label>
-          <input type="text" class="form-control" id="durationOfStay" name="durationOfStay" required>
+          <input
+            type="text"
+            class="form-control"
+            id="durationOfStay"
+            name="durationOfStay"
+            required
+            value="<%= travelInfo.durationOfStay %>"
+          />
         </div>
         <div class="d-flex justify-content-between align-items-center mt-3">
-          <button type="submit" class="btn btn-primary d-block">
-            Next
-          </button>
+          <button type="submit" class="btn btn-primary d-block">Next</button>
         </div>
       </form>
     </div>

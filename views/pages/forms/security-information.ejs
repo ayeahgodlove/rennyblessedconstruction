@@ -1,9 +1,10 @@
 <%- include("../../layout/header") %>
 <main>
   <div class="container py-5">
+    <%- include("../../layout/navbar") %>
     <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
       <h1>Security Information</h1>
-      <form action="/apply-security-information" method="post">
+      <form action="/apply-security-information" method="post" enctype="multipart/form-data">
         <div class="form-group mb-3">
           <label for="criminalRecord">Do you have any criminal record?</label>
           <select
@@ -13,8 +14,8 @@
             required
           >
             <option value="">Select</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
+            <option value="yes" <%= securityInfo.criminalRecord === 'yes' ? 'selected' : '' %>>Yes</option>
+            <option value="no" <%= securityInfo.criminalRecord === 'no' ? 'selected' : '' %>>No</option>
           </select>
         </div>
         <div class="form-group mb-3">
@@ -24,6 +25,7 @@
             class="form-control"
             id="detailsOfCriminalRecord"
             name="detailsOfCriminalRecord"
+            value="<%= securityInfo.detailsOfCriminalRecord %>"
           />
         </div>
         <div class="form-group mb-3">
@@ -36,7 +38,7 @@
             id="otherSecurityConcerns"
             name="otherSecurityConcerns"
             rows="3"
-          ></textarea>
+          ><%= securityInfo.otherSecurityConcerns %></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Next</button>
       </form>

@@ -4,7 +4,7 @@ const {
   ensureAuthenticated,
 } = require("../../config/middleware/is-authenticated.middleware");
 const TestimonialsController = require("../../controllers/testimonials.controller");
-const { uploadFile } = require("../../services/upload.config");
+const { uploadImage } = require("../../services/upload.config");
 const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const testimonialRouter = express.Router();
@@ -28,7 +28,7 @@ testimonialRouter.post(
   "/create",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("testimonials").single("imageUrl"),
+  uploadImage("testimonials").single("imageUrl"),
   async (req, res) => {
     try {
       let testimonialData = req.body;
@@ -65,7 +65,7 @@ testimonialRouter.post(
   "/edit/:id",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("testimonials").single("imageUrl"),
+  uploadImage("testimonials").single("imageUrl"),
   async (req, res) => {
     try {
       const testimonialData = req.body;

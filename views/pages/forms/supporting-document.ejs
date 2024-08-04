@@ -1,9 +1,14 @@
 <%- include("../../layout/header") %>
 <main>
   <div class="container py-5">
+    <%- include("../../layout/navbar") %>
     <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
       <h1 class="mb-3">Supporting Documents</h1>
-      <form action="/apply-supporting-documents" method="post">
+      <form
+        action="/apply-supporting-documents"
+        method="post"
+        enctype="multipart/form-data"
+      >
         <div class="form-group mb-3">
           <label for="photograph">Photograph:</label>
           <input

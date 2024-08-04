@@ -4,7 +4,7 @@ const {
   ensureAuthenticated,
 } = require("../../config/middleware/is-authenticated.middleware");
 const CountriesController = require("../../controllers/countries.controller");
-const { uploadFile } = require("../../services/upload.config");
+const { uploadImage } = require("../../services/upload.config");
 const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const countryRouter = express.Router();
@@ -33,7 +33,7 @@ countryRouter.post(
   "/create",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("countries").fields([
+  uploadImage("countries").fields([
     { name: "imageUrl", maxCount: 1 },
     { name: "flagUrl", maxCount: 1 },
   ]),
@@ -75,7 +75,7 @@ countryRouter.post(
   "/edit/:id",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("countries").single("imageUrl"),
+  uploadImage("countries").single("imageUrl"),
   async (req, res) => {
     try {
       const countryData = req.body;

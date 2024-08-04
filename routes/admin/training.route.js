@@ -4,7 +4,7 @@ const {
   ensureAuthenticated,
 } = require("../../config/middleware/is-authenticated.middleware");
 const TrainingsController = require("../../controllers/trainings.controller");
-const { uploadFile } = require("../../services/upload.config");
+const { uploadImage } = require("../../services/upload.config");
 const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const trainingRouter = express.Router();
@@ -33,7 +33,7 @@ trainingRouter.post(
   "/create",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("trainings").single("imageUrl"),
+  uploadImage("trainings").single("imageUrl"),
   async (req, res) => {
     try {
       let trainingData = req.body;
@@ -68,7 +68,7 @@ trainingRouter.post(
   "/edit/:id",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("trainings").single("imageUrl"),
+  uploadImage("trainings").single("imageUrl"),
   async (req, res) => {
     try {
       const trainingData = req.body;

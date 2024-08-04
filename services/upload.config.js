@@ -1,10 +1,24 @@
 const multer = require("multer");
 
-function fileFilter(req, file, cb) {
+function imageFilter(req, file, cb) {
   if (
     file.mimetype === "image/jpg" ||
     file.mimetype === "image/jpeg" ||
     file.mimetype === "image/png"
+  ) {
+    cb(null, true);
+  } else {
+    return cb(new Error("Invalid image type"));
+  }
+}
+
+function fileFilter(req, file, cb) {
+  if (
+    file.mimetype === "application/pdf" ||
+    file.mimetype === "application/msword" ||
+    file.mimetype === "text/plain" ||
+    file.mimetype === "application/zip" ||
+    file.mimetype === "application/vnd.ms-excel"
   ) {
     cb(null, true);
   } else {
@@ -25,6 +39,14 @@ function fileStorage(folderName) {
   });
 }
 
+function uploadImage(folderName) {
+  return multer({
+    storage: fileStorage(folderName),
+    imageFilter,
+    limits: { fileSize: 5 * 1024 * 1024 },
+  });
+}
+
 function uploadFile(folderName) {
   return multer({
     storage: fileStorage(folderName),
@@ -33,4 +55,4 @@ function uploadFile(folderName) {
   });
 }
 
-module.exports = { uploadFile };
+module.exports = { uploadImage, uploadFile };

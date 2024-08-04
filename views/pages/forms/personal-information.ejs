@@ -1,6 +1,7 @@
 <%- include("../../layout/header") %>
 <main>
   <div class="container py-5">
+    <%- include("../../layout/navbar") %>
     <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
       <h1 class="mb-3">Personal Information</h1>
       <form action="/apply-personal-information" method="post" class="row">
@@ -12,6 +13,7 @@
             name="fullName"
             class="form-control"
             required
+            value="<%= personalInfo.fullName %>"
           />
         </div>
         <div class="col-6 col-md-6 form-group mt-2">
@@ -22,6 +24,7 @@
             id="phone"
             name="phone"
             required
+            value="<%= personalInfo.phone %>"
           />
         </div>
 
@@ -33,6 +36,7 @@
             name="email"
             class="form-control"
             required
+            value="<%= personalInfo.email %>"
           />
         </div>
 
@@ -46,6 +50,7 @@
             name="address"
             class="form-control"
             required
+            value="<%= personalInfo.address %>"
           />
         </div>
         <div class="col-6 col-md-6 form-group mt-2">
@@ -56,6 +61,7 @@
             name="dateOfBirth"
             class="form-control"
             required
+            value="<%= personalInfo.dateOfBirth.toISOString().split('T')[0] %>"
           />
         </div>
 
@@ -67,33 +73,34 @@
             name="birthCountry"
             class="form-control"
             required
+            value="<%= personalInfo.birthCountry %>"
           />
         </div>
 
         <div class="col-6 col-md-4 form-group mt-2">
           <label for="nationality" class="form-label">Nationality:</label>
           <select id="nationality" name="nationality" class="form-control">
-            <option value="cameroon">Cameroon</option>
-            <option value="nigeria">Nigeria</option>
-            <option value="guinea">Guinea</option>
+            <option value="cameroon" <%= personalInfo.nationality === 'cameroon' ? 'selected' : '' %>>Cameroon</option>
+            <option value="nigeria" <%= personalInfo.nationality === 'nigeria' ? 'selected' : '' %>>Nigeria</option>
+            <option value="guinea" <%= personalInfo.nationality === 'guinea' ? 'selected' : '' %>>Guinea</option>
           </select>
         </div>
 
         <div class="col-6 col-md-4 form-group mt-2">
           <label for="gender" class="form-label">Gender:</label>
           <select id="gender" name="gender" class="form-control">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="others">Others</option>
+            <option value="male" <%= personalInfo.gender === 'male' ? 'selected' : '' %>>Male</option>
+            <option value="female" <%= personalInfo.gender === 'female' ? 'selected' : '' %>>Female</option>
+            <option value="others" <%= personalInfo.gender === 'others' ? 'selected' : '' %>>Others</option>
           </select>
         </div>
 
         <div class="col-6 col-md-4 form-group mt-2">
           <label for="maritalStatus" class="form-label">Marital Status:</label>
           <select id="maritalStatus" name="maritalStatus" class="form-control">
-            <option value="married">Married</option>
-            <option value="single">Single</option>
-            <option value="divorced">Divorced</option>
+            <option value="married" <%= personalInfo.maritalStatus === 'married' ? 'selected' : '' %>>Married</option>
+            <option value="single" <%= personalInfo.maritalStatus === 'single' ? 'selected' : '' %>>Single</option>
+            <option value="divorced" <%= personalInfo.maritalStatus === 'divorced' ? 'selected' : '' %>>Divorced</option>
           </select>
         </div>
 
@@ -107,6 +114,7 @@
             id="passportNumber"
             name="passportNumber"
             required
+            value="<%= personalInfo.passportNumber %>"
           />
         </div>
 
@@ -120,6 +128,7 @@
             id="passportIssueDate"
             name="passportIssueDate"
             required
+            value="<%= personalInfo.passportIssueDate.toISOString().split('T')[0] %>"
           />
         </div>
 
@@ -133,6 +142,7 @@
             id="passportExpiryDate"
             name="passportExpiryDate"
             required
+            value="<%= personalInfo.passportExpiryDate.toISOString().split('T')[0] %>"
           />
         </div>
 
@@ -144,6 +154,7 @@
             id="passportIssuingCountry"
             name="passportIssuingCountry"
             required
+            value="<%= personalInfo.passportIssuingCountry %>"
           />
         </div>
 

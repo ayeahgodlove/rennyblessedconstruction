@@ -1,9 +1,14 @@
 <%- include("../../layout/header") %>
 <main>
   <div class="container py-5">
+    <%- include("../../layout/navbar") %>
     <div class="col-12 col-md-10 mx-md-auto card border-0 shadow p-5">
-      <h1 class="mb-3">Personal Information</h1>
-      <form action="/apply-health-information" method="post">
+      <h1 class="mb-3">Health Information</h1>
+      <form
+        action="/apply-health-information"
+        method="post"
+        enctype="multipart/form-data"
+      >
         <div class="form-group mb-3">
           <label for="medicalHistory">Medical History:</label>
           <input

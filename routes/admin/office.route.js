@@ -4,7 +4,7 @@ const {
   ensureAuthenticated,
 } = require("../../config/middleware/is-authenticated.middleware");
 const OfficesController = require("../../controllers/offices.controller");
-const { uploadFile } = require("../../services/upload.config");
+const { uploadImage } = require("../../services/upload.config");
 const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const officeRouter = express.Router();
@@ -33,7 +33,7 @@ officeRouter.post(
   "/create",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("offices").single("imageUrl"),
+  uploadImage("offices").single("imageUrl"),
   async (req, res) => {
     try {
       let officeData = req.body;
@@ -68,7 +68,7 @@ officeRouter.post(
   "/edit/:id",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("offices").single("imageUrl"),
+  uploadImage("offices").single("imageUrl"),
   async (req, res) => {
     try {
       const officeData = req.body;

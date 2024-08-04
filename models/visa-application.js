@@ -36,7 +36,7 @@ VisaApplication.init(
     sequelize,
     modelName: "VisaApplication",
     freezeTableName: true,
-    tableName: "visa-application",
+    tableName: "visaApplication",
   }
 );
 

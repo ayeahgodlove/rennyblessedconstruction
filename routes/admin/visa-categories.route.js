@@ -4,7 +4,7 @@ const {
   ensureAuthenticated,
 } = require("../../config/middleware/is-authenticated.middleware");
 const VisaCategoriesController = require("../../controllers/visaCategories.controller");
-const { uploadFile } = require("../../services/upload.config");
+const { uploadImage } = require("../../services/upload.config");
 const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const visaCaetgoryRouter = express.Router();
@@ -34,7 +34,7 @@ visaCaetgoryRouter.post(
   "/create",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("visa-categories").single("imageUrl"),
+  uploadImage("visa-categories").single("imageUrl"),
   async (req, res) => {
     try {
       let trainingData = req.body;
@@ -71,7 +71,7 @@ visaCaetgoryRouter.post(
   "/edit/:id",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("visaCategories").single("imageUrl"),
+  uploadImage("visaCategories").single("imageUrl"),
   async (req, res) => {
     try {
       const trainingData = req.body;

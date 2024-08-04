@@ -4,7 +4,7 @@ const {
   ensureAuthenticated,
 } = require("../../config/middleware/is-authenticated.middleware");
 const FeaturesController = require("../../controllers/features.controller");
-const { uploadFile } = require("../../services/upload.config");
+const { uploadImage } = require("../../services/upload.config");
 const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const featureRouter = express.Router();
@@ -33,7 +33,7 @@ featureRouter.post(
   "/create",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("features").single("imageUrl"),
+  uploadImage("features").single("imageUrl"),
   async (req, res) => {
     try {
       let featureData = req.body;
@@ -68,7 +68,7 @@ featureRouter.post(
   "/edit/:id",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadFile("features").single("imageUrl"),
+  uploadImage("features").single("imageUrl"),
   async (req, res) => {
     try {
       const featureData = req.body;
