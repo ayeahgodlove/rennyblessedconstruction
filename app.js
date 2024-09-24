@@ -13,18 +13,15 @@ const flash = require("connect-flash");
 require("./config/passport-auth")(passport);
 
 const authRoutes = require("./routes/auth");
-const officeRouter = require("./routes/admin/office.route");
-const countryRouter = require("./routes/admin/country.route");
-const featureRouter = require("./routes/admin/feature.route");
+const serviceRouter = require("./routes/admin/service.route");
 const testimonialRouter = require("./routes/admin/testimonials.route");
-const trainingRouter = require("./routes/admin/training.route");
-const visaCaetgoryRouter = require("./routes/admin/visa-categories.route");
 const pagesRouter = require("./routes/pages.route");
 const {
   ensureAuthenticated,
 } = require("./config/middleware/is-authenticated.middleware");
 const checkRole = require("./config/middleware/is-authorized.middle");
-const visaApplicationRouter = require("./routes/admin/visa-application.route");
+const categoryRouter = require("./routes/admin/category.route");
+const projectRouter = require("./routes/admin/project.route");
 
 const port = process.env.SERVER_PORT;
 
@@ -88,13 +85,10 @@ app.get(
   }
 );
 
-app.use("/dashboard/offices", officeRouter);
-app.use("/dashboard/countries", countryRouter);
-app.use("/dashboard/features", featureRouter);
+app.use("/dashboard/categories", categoryRouter);
+app.use("/dashboard/projects", projectRouter);
+app.use("/dashboard/services", serviceRouter);
 app.use("/dashboard/testimonials", testimonialRouter);
-app.use("/dashboard/trainings", trainingRouter);
-app.use("/dashboard/visa-categories", visaCaetgoryRouter);
-app.use("/dashboard/visa-applications", visaApplicationRouter);
 // app.get(
 //   "/dashboard/visa-applications", 
 //   ensureAuthenticated,

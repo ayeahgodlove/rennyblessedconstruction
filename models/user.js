@@ -25,13 +25,19 @@ User.init(
       type: DataTypes.STRING(128),
       allowNull: false,
       unique: true,
+      validate: {
+        isEmail: true,
+      },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [6, 100],
+      },
     },
     role: {
-      type: DataTypes.ENUM("applicant", "officer", "admin", "super-admin"),
+      type: DataTypes.ENUM("user", "admin", "super-admin"),
       allowNull: false,
     },
   },

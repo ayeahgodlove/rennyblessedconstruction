@@ -35,7 +35,7 @@ router.post("/login", (req, res, next) => {
       // Redirect based on role
       if (user.role === "admin" || user.role === "super-admin") {
         return res.redirect("/dashboard");
-      } else if (user.role === "applicant") {
+      } else if (user.role === "user") {
         return res.redirect("/applicant-home");
       } else {
         return res.redirect("/login");
@@ -81,7 +81,7 @@ router.post("/register", async (req, res) => {
         email,
         username,
         password: hashedPassword,
-        role: "applicant",
+        role: "user",
       });
       req.flash("success_msg", "You are now registered and can log in");
       res.redirect("/login");

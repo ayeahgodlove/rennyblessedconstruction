@@ -2,21 +2,21 @@
   "development": {
     "username": "postgres",
     "password": "admin@2022",
-    "database": "travisa_db",
+    "database": "rennyblessed_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "your_postgres_password",
-    "database": "travisa_db",
+    "database": "rennyblessed_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "your_postgres_password",
-    "database": "travisa_db",
+    "database": "rennyblessed_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
