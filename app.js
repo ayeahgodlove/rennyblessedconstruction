@@ -22,6 +22,7 @@ const {
 const checkRole = require("./config/middleware/is-authorized.middle");
 const categoryRouter = require("./routes/admin/category.route");
 const projectRouter = require("./routes/admin/project.route");
+const userRouter = require("./routes/admin/user.route");
 
 const port = process.env.SERVER_PORT;
 
@@ -89,22 +90,16 @@ app.use("/dashboard/categories", categoryRouter);
 app.use("/dashboard/projects", projectRouter);
 app.use("/dashboard/services", serviceRouter);
 app.use("/dashboard/testimonials", testimonialRouter);
+app.use("/dashboard/users", userRouter);
+
 // app.get(
-//   "/dashboard/visa-applications", 
+//   "/dashboard/users",
 //   ensureAuthenticated,
 //   checkRole(["admin", "super-admin"]),
 //   (req, res) => {
-//     res.render("pages/admin/visa-applications");
+//     res.render("pages/admin/users");
 //   }
 // );
-app.get(
-  "/dashboard/users",
-  ensureAuthenticated,
-  checkRole(["admin", "super-admin"]),
-  (req, res) => {
-    res.render("pages/admin/users");
-  }
-);
 app.use("/", authRoutes);
 
 // 404 route handler

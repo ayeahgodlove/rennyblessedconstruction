@@ -31,15 +31,15 @@ class ProjectsController {
     }
   }
 
-  async editProject(project) {
-    const { id } = project;
+  async editProject(projectData) {
+    const { id } = projectData;
     try {
       const project = await Project.findByPk(id);
 
       if (!project) {
         throw Error("Project not found!");
       }
-      const updatedProject = await project.update(project);
+      const updatedProject = await project.update(projectData);
       return updatedProject;
     } catch (error) {
       throw error;

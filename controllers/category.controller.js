@@ -31,15 +31,15 @@ class CategoriesController {
     }
   }
 
-  async editCategory(category) {
-    const { id } = category;
+  async editCategory(categoryData) {
+    const { id } = categoryData;
     try {
       const category = await Category.findByPk(id);
 
       if (!category) {
         throw Error("Category not found!");
       }
-      const updatedCategory = await category.update(category);
+      const updatedCategory = await category.update(categoryData);
       return updatedCategory;
     } catch (error) {
       throw error;

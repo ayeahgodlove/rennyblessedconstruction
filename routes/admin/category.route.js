@@ -4,7 +4,6 @@ const {
   ensureAuthenticated,
 } = require("../../config/middleware/is-authenticated.middleware");
 const CategoriesController = require("../../controllers/category.controller");
-const { uploadImage } = require("../../services/upload.config");
 const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const categoryRouter = express.Router();
@@ -33,13 +32,10 @@ categoryRouter.post(
   "/create",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadImage("categories").single("imageUrl"),
+  // uploadImage("categories").single("imageUrl"),
   async (req, res) => {
     try {
       let categoryData = req.body;
-      if (req.file) {
-        categoryData.imageUrl = req.file.filename;
-      }
       await categoriesController.createCategory(categoryData);
       // res.render("pages/admin/categories/create");
       res.redirect("/dashboard/categories");
@@ -68,13 +64,10 @@ categoryRouter.post(
   "/edit/:id",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadImage("categories").single("imageUrl"),
+  // uploadImage("categories").single("imageUrl"),
   async (req, res) => {
     try {
       const categoryData = req.body;
-      if (req.file) {
-        categoryData.imageUrl = req.file.filename;
-      }
       await categoriesController.editCategory({
         id: req.params.id,
         ...categoryData,

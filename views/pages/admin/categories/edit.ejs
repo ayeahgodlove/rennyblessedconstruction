@@ -12,9 +12,8 @@
       <!-- Vertical Form -->
       <form
         class="row g-3"
-        action="/dashboard/categories/edit/<%= visaCategory.id %>"
+        action="/dashboard/categories/edit/<%= category.id %>"
         method="post"
-        enctype="multipart/form-data"
       >
         <div class="col-12">
           <label for="name" class="form-label"
@@ -26,7 +25,7 @@
             name="name"
             id="name"
             placeholder="name"
-            value="<%= visaCategory.name %>"
+            value="<%= category.name %>"
           />
         </div>
         <div class="text-left">

@@ -10,11 +10,6 @@ Project.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    categoryId: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
     title: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -23,6 +18,17 @@ Project.init(
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
+    },
+    client: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    projectUrl: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    projectDate: {
+      type: DataTypes.DATE,
     },
     categoryId: {
       type: DataTypes.INTEGER,

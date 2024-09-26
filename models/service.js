@@ -12,16 +12,16 @@ Service.init(
       autoIncrement: true,
     },
     title: {
-      type: DataTypes.STRING(128),
+      type: DataTypes.STRING(255),
       allowNull: false,
       unique: true,
     },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
-    }, 
+    },
     imageUrl: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       validate: {
         isUrl: true,
       },

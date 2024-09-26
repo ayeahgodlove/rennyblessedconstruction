@@ -31,15 +31,15 @@ class ServicesController {
     }
   }
 
-  async editService(service) {
-    const { id } = service;
+  async editService(serviceData) {
+    const { id } = serviceData;
     try {
       const service = await Service.findByPk(id);
 
       if (!service) {
         throw Error("Service not found!");
       }
-      const updatedService = await service.update(service);
+      const updatedService = await service.update(serviceData);
       return updatedService;
     } catch (error) {
       throw error;

@@ -16,7 +16,7 @@ Testimonial.init(
       allowNull: false,
       unique: true,
     },
-    profession: {
+    profession: { 
       type: DataTypes.STRING(128),
       allowNull: false,
     },

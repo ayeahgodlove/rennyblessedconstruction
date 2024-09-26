@@ -12,39 +12,40 @@
       <!-- Vertical Form -->
       <form
         class="row g-3"
-        action="/dashboard/services/edit/<%= feature.id %>"
+        action="/dashboard/services/edit/<%= service.id %>"
         method="post"
         enctype="multipart/form-data"
       >
         <div class="col-12">
-          <label for="featureName" class="form-label">Feature Name</label>
+          <label for="title" class="form-label">Title</label>
           <input
             type="text"
             class="form-control"
-            name="featureName"
-            id="featureName"
-            value="<%= feature.featureName %>"
-            placeholder="feature name"
+            name="title"
+            id="title"
+            value="<%= service.title %>"
+            placeholder="title"
           />
         </div>
 
         <div class="col-12">
           <label for="description" class="form-label">Description</label>
           <textarea
+            cols="3"
             name="description"
             class="form-control"
             id="description"
-          ><%= feature.description %></textarea>
+          ><%= service.description %></textarea
+          >
         </div>
 
         <div class="col-12">
-          <label for="icon" class="form-label">Icon</label>
+          <label for="imageUrl" class="form-label">ImageUrl</label>
           <input
-            type="text"
-            name="icon"
+            type="file"
+            name="imageUrl"
             class="form-control"
-            id="icon"
-            value="<%= feature.icon %>"
+            id="imageUrl"
           />
         </div>
         <div class="text-left">

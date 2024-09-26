@@ -4,11 +4,13 @@ const {
   ensureAuthenticated,
 } = require("../../config/middleware/is-authenticated.middleware");
 const ProjectsController = require("../../controllers/project.controller");
+const CategoriesController = require("../../controllers/category.controller");
 const { uploadImage } = require("../../services/upload.config");
 const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const projectRouter = express.Router();
 const projectsController = new ProjectsController();
+const categoriesController = new CategoriesController();
 
 projectRouter.get(
   "/",
@@ -25,7 +27,8 @@ projectRouter.get(
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
   async (req, res) => {
-    res.render("pages/admin/projects/create");
+    const categories = await categoriesController.getAllCategories();
+    res.render("pages/admin/projects/create", { categories });
   }
 );
 
@@ -56,7 +59,8 @@ projectRouter.get(
   async (req, res) => {
     try {
       const project = await projectsController.getProject(req.params.id);
-      res.render("pages/admin/projects/edit", { project });
+      const categories = await categoriesController.getAllCategories();
+      res.render("pages/admin/projects/edit", { project, categories, categoryId: project.categoryId });
     } catch (error) {
       res.status(500).send(error.message);
     }

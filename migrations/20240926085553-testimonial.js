@@ -9,37 +9,28 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-
-    await queryInterface.createTable("project", {
+    await queryInterface.createTable("testimonial", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
       },
-      title: {
-        type: Sequelize.STRING,
+      personName: {
+        type: Sequelize.STRING(255),
         allowNull: false,
       },
-      description: {
-        type: Sequelize.TEXT,
+      profession: {
+        type: Sequelize.STRING(255),
         allowNull: false,
       },
       imageUrl: {
-        type: Sequelize.STRING,
-        validate: {
-          isUrl: true,
-        },
-      },
-      categoryId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING(255),
         allowNull: false,
-        references: {
-          model: "category", // References the category table
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
+      },
+      testimony: {
+        type: Sequelize.TEXT,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -48,6 +39,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+      },
+      rating: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
     });
   },
@@ -59,6 +54,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable("project");
+    await queryInterface.dropTable("testimonial");
   },
 };

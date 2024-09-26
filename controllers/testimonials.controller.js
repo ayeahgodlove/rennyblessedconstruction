@@ -31,15 +31,15 @@ class TestimonialsController {
     }
   }
 
-  async editTestimonial(testimonial) {
-    const { id } = testimonial;
+  async editTestimonial(testimonialData) {
+    const { id } = testimonialData;
     try {
       const testimonial = await Testimonial.findByPk(id);
 
       if (!testimonial) {
         throw Error("Testimonial not found!");
       }
-      const updatedTestimonial = await testimonial.update(testimonial);
+      const updatedTestimonial = await testimonial.update(testimonialData);
       return updatedTestimonial;
     } catch (error) {
       throw error;

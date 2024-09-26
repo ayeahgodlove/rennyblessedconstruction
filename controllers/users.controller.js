@@ -22,15 +22,15 @@ class UsersController {
     }
   }
 
-  async editUser(user) {
-    const { id, name, username, email, password, role } = user;
+  async editUser(userData) {
+    const { id, name, username, email, password, role } = userData;
     try {
       const user = await User.findByPk(id);
 
       if (!user) {
         throw Error("User not found!");
       }
-      const updatedUser = await user.update(user);
+      const updatedUser = await user.update(userData);
       return updatedUser;
     } catch (error) {
       throw error;
