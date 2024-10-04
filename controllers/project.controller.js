@@ -1,14 +1,20 @@
 const Project = require("../models/project");
-
+const Picture = require("../models/picture");
 class ProjectsController {
   async getAllProjects() {
     try {
-      const projects = await Project.findAll();
+      const projects = await Project.findAll({
+        include: {
+          model: Picture,
+          as: "pictures", // The alias defined in your association (if applicable)
+        },
+      });
       return projects;
     } catch (error) {
       throw error;
     }
   }
+
   async getProject(projectId) {
     try {
       const project = await Project.findByPk(projectId);
@@ -34,7 +40,12 @@ class ProjectsController {
   async editProject(projectData) {
     const { id } = projectData;
     try {
-      const project = await Project.findByPk(id);
+      const project = await Project.findByPk(id, {
+        include: {
+          model: Picture,
+          as: "pictures", // Ensure this matches the association alias
+        },
+      });
 
       if (!project) {
         throw Error("Project not found!");
@@ -48,7 +59,12 @@ class ProjectsController {
 
   async deleteProject(id) {
     try {
-      const project = await Project.findByPk(id);
+      const project = await Project.findByPk(id, {
+        include: {
+          model: Picture,
+          as: "pictures", // Ensure this matches the association alias
+        },
+      });
       if (!project) {
         throw new Error("Project not found");
       }

@@ -154,7 +154,7 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 32px;
+  max-height: 100px;
   margin-right: 8px;
 }
 
@@ -792,7 +792,7 @@ section,
 .hero .info h2 {
   margin-bottom: 30px;
   padding-bottom: 30px;
-  font-size: 56px;
+  font-size: 45px;
   font-weight: 700;
   position: relative;
 }
@@ -1629,7 +1629,7 @@ section,
 @media (min-width: 991px) {
   .about .inner-title {
     max-width: 65%;
-    margin: 0 0 80px 0;
+    margin: 0 0 30px 0;
   }
 }
 

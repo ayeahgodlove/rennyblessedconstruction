@@ -9,34 +9,44 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.createTable("picture", {
+    await queryInterface.createTable("team", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
       },
-      imageUrl: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-          isUrl: true,
-        },
-      },
-      projectId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "project", // References the project table
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE",
-      },
-      title: {
+      personName: {
         type: Sequelize.STRING(255),
         allowNull: false,
-        unique: true,
+      },
+      profession: {
+        type: Sequelize.STRING(255),
+        allowNull: false,
+      },
+      imageUrl: {
+        type: Sequelize.STRING(255),
+        allowNull: false,
+      },
+      biography: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
+      facebookUrl: {
+        type: Sequelize.STRING(255),
+        allowNull: false,
+      },
+      twitterUrl: {
+        type: Sequelize.STRING(255),
+        allowNull: false,
+      },
+      linkedInUrl: {
+        type: Sequelize.STRING(255),
+        allowNull: false,
+      },
+      instagramUrl: {
+        type: Sequelize.STRING(255),
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -45,6 +55,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+      },
+      rating: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
     });
   },
@@ -56,6 +70,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.dropTable("picture");
+    await queryInterface.dropTable("team");
   },
 };

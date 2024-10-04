@@ -23,6 +23,7 @@ const checkRole = require("./config/middleware/is-authorized.middle");
 const categoryRouter = require("./routes/admin/category.route");
 const projectRouter = require("./routes/admin/project.route");
 const userRouter = require("./routes/admin/user.route");
+const pictureRouter = require("./routes/admin/picture.route");
 
 const port = process.env.SERVER_PORT;
 
@@ -88,6 +89,7 @@ app.get(
 
 app.use("/dashboard/categories", categoryRouter);
 app.use("/dashboard/projects", projectRouter);
+app.use("/dashboard/pictures", pictureRouter);
 app.use("/dashboard/services", serviceRouter);
 app.use("/dashboard/testimonials", testimonialRouter);
 app.use("/dashboard/users", userRouter);

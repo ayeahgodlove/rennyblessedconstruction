@@ -94,6 +94,23 @@
       <!-- Vertical Form -->
     </div>
   </div>
+
+  <div class="row justify-content-start align-items-center py-5">
+    <div class="col-12 text-center">
+      <h3 class="font-weight-bold">Project Pictures</h3>
+    </div>
+      <% project.pictures.forEach(pic => { %>
+        <div class="col-12 col-md-4">
+          <div class="card shadow-sm">
+              <img
+              src="http://localhost:8088/uploads/pictures/<%= pic.imageUrl %>"
+              class="img-thumbnail"
+            />
+          </div>
+        </div>
+        <% }) %>
+     
+  </div>
 </main>
 
 <%- include("../../../layout/admin-footer") %>

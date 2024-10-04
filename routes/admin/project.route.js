@@ -4,13 +4,14 @@ const {
   ensureAuthenticated,
 } = require("../../config/middleware/is-authenticated.middleware");
 const ProjectsController = require("../../controllers/project.controller");
+const PicturesController = require("../../controllers/picture.controller");
 const CategoriesController = require("../../controllers/category.controller");
-const { uploadImage } = require("../../services/upload.config");
 const checkRole = require("../../config/middleware/is-authorized.middle");
 
 const projectRouter = express.Router();
 const projectsController = new ProjectsController();
 const categoriesController = new CategoriesController();
+const picturesController = new PicturesController();
 
 projectRouter.get(
   "/",
@@ -36,13 +37,9 @@ projectRouter.post(
   "/create",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadImage("projects").single("imageUrl"),
   async (req, res) => {
     try {
       let projectData = req.body;
-      if (req.file) {
-        projectData.imageUrl = req.file.filename;
-      }
       await projectsController.createProject(projectData);
       // res.render("pages/admin/projects/create");
       res.redirect("/dashboard/projects");
@@ -58,9 +55,20 @@ projectRouter.get(
   checkRole(["admin", "super-admin"]),
   async (req, res) => {
     try {
-      const project = await projectsController.getProject(req.params.id);
+      const projectData = await projectsController.getProject(req.params.id);
       const categories = await categoriesController.getAllCategories();
-      res.render("pages/admin/projects/edit", { project, categories, categoryId: project.categoryId });
+      const pictures = await picturesController.getProjectWithPictures(
+        req.params.id
+      );
+      const project = {
+        ...projectData.toJSON(),
+        pictures: pictures.map((picture) => picture.toJSON()),
+      };
+      res.render("pages/admin/projects/edit", {
+        project,
+        categories,
+        categoryId: project.categoryId,
+      });
     } catch (error) {
       res.status(500).send(error.message);
     }
@@ -72,13 +80,9 @@ projectRouter.post(
   "/edit/:id",
   ensureAuthenticated,
   checkRole(["admin", "super-admin"]),
-  uploadImage("projects").single("imageUrl"),
   async (req, res) => {
     try {
       const projectData = req.body;
-      if (req.file) {
-        projectData.imageUrl = req.file.filename;
-      }
       await projectsController.editProject({
         id: req.params.id,
         ...projectData,

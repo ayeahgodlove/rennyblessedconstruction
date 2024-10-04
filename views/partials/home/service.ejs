@@ -1,125 +1,14 @@
-<!-- Services Section -->
-<section id="services" class="services section light-background">
+<!-- Alt Services Section -->
+<section id="alt-services" class="alt-services section">
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
-    <h2>Services</h2>
+    <h2>Our Services</h2>
     <p>
-      Necessitatibus eius consequatur ex aliquid fuga eum quidem sint
-      consectetur velit
+      Let RennyBlessed Construction be your trusted
+      partner for all your construction and engineering needs.
     </p>
   </div>
   <!-- End Section Title -->
-
-  <div class="container">
-    <div class="row gy-4">
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-mountain-city"></i>
-          </div>
-          <h3>Nesciunt Mete</h3>
-          <p>
-            Provident nihil minus qui consequatur non omnis maiores. Eos
-            accusantium minus dolores iure perferendis tempore et consequatur.
-          </p>
-          <a href="#" class="readmore stretched-link"
-            >Read more <i class="bi bi-arrow-right"></i
-          ></a>
-        </div>
-      </div>
-      <!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-arrow-up-from-ground-water"></i>
-          </div>
-          <h3>Eosle Commodi</h3>
-          <p>
-            Ut autem aut autem non a. Sint sint sit facilis nam iusto sint.
-            Libero corrupti neque eum hic non ut nesciunt dolorem.
-          </p>
-          <a href="#" class="readmore stretched-link"
-            >Read more <i class="bi bi-arrow-right"></i
-          ></a>
-        </div>
-      </div>
-      <!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-compass-drafting"></i>
-          </div>
-          <h3>Ledo Markt</h3>
-          <p>
-            Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea
-            aut. Vel qui id voluptas adipisci eos earum corrupti.
-          </p>
-          <a href="#" class="readmore stretched-link"
-            >Read more <i class="bi bi-arrow-right"></i
-          ></a>
-        </div>
-      </div>
-      <!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-trowel-bricks"></i>
-          </div>
-          <h3>Asperiores Commodit</h3>
-          <p>
-            Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate
-            sed error ea fuga sit provident adipisci neque.
-          </p>
-          <a href="#" class="readmore stretched-link"
-            >Read more <i class="bi bi-arrow-right"></i
-          ></a>
-        </div>
-      </div>
-      <!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-helmet-safety"></i>
-          </div>
-          <h3>Velit Doloremque</h3>
-          <p>
-            Cumque et suscipit saepe. Est maiores autem enim facilis ut aut
-            ipsam corporis aut. Sed animi at autem alias eius labore.
-          </p>
-          <a href="#" class="readmore stretched-link"
-            >Read more <i class="bi bi-arrow-right"></i
-          ></a>
-        </div>
-      </div>
-      <!-- End Service Item -->
-
-      <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-        <div class="service-item position-relative">
-          <div class="icon">
-            <i class="fa-solid fa-arrow-up-from-ground-water"></i>
-          </div>
-          <h3>Dolori Architecto</h3>
-          <p>
-            Hic molestias ea quibusdam eos. Fugiat enim doloremque aut neque non
-            et debitis iure. Corrupti recusandae ducimus enim.
-          </p>
-          <a href="#" class="readmore stretched-link"
-            >Read more <i class="bi bi-arrow-right"></i
-          ></a>
-        </div>
-      </div>
-      <!-- End Service Item -->
-    </div>
-  </div>
-</section>
-<!-- /Services Section -->
-
-<!-- Alt Services Section -->
-<section id="alt-services" class="alt-services section">
   <div class="container">
     <div class="row justify-content-around gy-4">
       <div
@@ -135,75 +24,34 @@
         data-aos="fade-up"
         data-aos-delay="200"
       >
-        <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
+        <h3>Explore Our Expertise</h3>
         <p>
-          Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus.
-          Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed
-          facere corporis dolores excepturi
+          we offer a wide range of professional services to cater to the diverse
+          needs of our clients. Our commitment to excellence ensures that every
+          project, no matter the scale, is executed with precision,
+          professionalism, and attention to detail.
         </p>
 
+        <% services.forEach(service => { %>
         <div
           class="icon-box d-flex position-relative"
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          <i class="bi bi-easel flex-shrink-0"></i>
+          <i class="flex-shrink-0"
+            ><img
+              height="50"
+              width="50"
+              src="http://localhost:8088/uploads/services/<%= service.imageUrl %>"
+              alt="<%= service.title %>"
+          /></i>
           <div>
-            <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
-            <p>
-              Voluptatum deleniti atque corrupti quos dolores et quas molestias
-              excepturi sint occaecati cupiditate non provident
-            </p>
+            <h4><a href="" class="stretched-link"><%= service.title %></a></h4>
+            <p><%= stringLimiter(service.description, 100) %></p>
           </div>
         </div>
-        <!-- End Icon Box -->
+        <% }) %>
 
-        <div
-          class="icon-box d-flex position-relative"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        >
-          <i class="bi bi-patch-check flex-shrink-0"></i>
-          <div>
-            <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
-            <p>
-              At vero eos et accusamus et iusto odio dignissimos ducimus qui
-              blanditiis praesentium voluptatum deleniti atque
-            </p>
-          </div>
-        </div>
-        <!-- End Icon Box -->
-
-        <div
-          class="icon-box d-flex position-relative"
-          data-aos="fade-up"
-          data-aos-delay="500"
-        >
-          <i class="bi bi-brightness-high flex-shrink-0"></i>
-          <div>
-            <h4><a href="" class="stretched-link">Dine Pad</a></h4>
-            <p>
-              Explicabo est voluptatum asperiores consequatur magnam. Et
-              veritatis odit. Sunt aut deserunt minus aut eligendi omnis
-            </p>
-          </div>
-        </div>
-        <!-- End Icon Box -->
-
-        <div
-          class="icon-box d-flex position-relative"
-          data-aos="fade-up"
-          data-aos-delay="600"
-        >
-          <i class="bi bi-brightness-high flex-shrink-0"></i>
-          <div>
-            <h4><a href="" class="stretched-link">Tride clov</a></h4>
-            <p>
-              Est voluptatem labore deleniti quis a delectus et. Saepe dolorem
-              libero sit non aspernatur odit amet. Et eligendi
-            </p>
-          </div>
-        </div>
         <!-- End Icon Box -->
       </div>
     </div>

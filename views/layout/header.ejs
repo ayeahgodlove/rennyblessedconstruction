@@ -30,17 +30,19 @@
 
       <a href="/" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">UpConstruction</h1> <span>.</span>
+        <img height="80" width="100" src="assets/logo.png" class="image-fluid" alt="RENNYBLESSED CONSTRUCTION AND ENGINEERING ASSOCIATE RBEC Ltd">
+        <h1 class="sitename">RB Construction</h1> <span>.</span>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="/" class="active">Home</a></li>
-          <li><a href="about-us">About</a></li>
-          <li><a href="services">Services</a></li>
-          <li><a href="projects">Projects</a></li>
-          <li><a href="contact-us">Contact</a></li>
+          <li>
+            <a href="/" class="<%= (requestPath === '/') ? 'active' : '' %>">Home</a>
+          </li>
+          <li><a href="/about-us" class="<%= (requestPath === '/about-us') ? 'active' : '' %>">About</a></li>
+          <li><a href="/services" class="<%= (requestPath === '/services') ? 'active' : '' %>">Service</a></li>
+          <li><a href="/projects" class="<%= (requestPath === '/projects') ? 'active' : '' %>">Projects</a></li>
+          <li><a href="/contact-us" class="<%= (requestPath === '/contact-us') ? 'active' : '' %>">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
