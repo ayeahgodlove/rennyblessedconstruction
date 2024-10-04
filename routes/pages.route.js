@@ -71,6 +71,7 @@ pagesRouter.get("/projects", async (req, res) => {
   const projects = await projectsController.getAllProjects();
   const getProject = await projectsController.getProject;
   const pictures = await picturesController.getAllPictures();
+  const services = await servicesController.getAllServices();
 
   res.render("pages/project", {
     pageTitle: "Projects",
@@ -79,14 +80,19 @@ pagesRouter.get("/projects", async (req, res) => {
     stringLimiter,
     stringSlugify,
     getProject,
-    pictures
+    pictures,
+    services
   });
 });
 
 pagesRouter.get("/contact-us", async (req, res) => {
+  const services = await servicesController.getAllServices();
   res.render("pages/contact", {
     pageTitle: "Contact Us",
     uri: "Contact",
+    services,
+    stringLimiter,
+    stringSlugify,
   });
 });
 
@@ -105,10 +111,14 @@ pagesRouter.get("/services", async (req, res) => {
 
 pagesRouter.get("/testimonials", async (req, res) => {
   const testimonials = await testimonialsController.getAllTestimonials();
+  const services = await servicesController.getAllServices();
   res.render("pages/testimony", {
     pageTitle: "Testimonials",
     uri: "Testimonial",
     testimonials,
+    services,
+    stringLimiter,
+    stringSlugify,
   });
 });
 
