@@ -4,9 +4,16 @@ const passport = require("passport");
 const User = require("../models/user");
 const router = express.Router();
 
+const ServicesController = require("../controllers/service.controller");
+const stringLimiter = require("../utils/string");
+const stringSlugify = require("../utils/string-slugify");
+
+const servicesController = new ServicesController();
 // Login Route
-router.get("/login", (req, res) => {
-  res.render("login");
+router.get("/login", async (req, res) => {
+  const services = await servicesController.getAllServices();
+
+  res.render("pages/login", { services, stringLimiter, stringSlugify });
 });
 
 router.post("/login", (req, res, next) => {
@@ -45,8 +52,9 @@ router.post("/login", (req, res, next) => {
 });
 
 // Register Route
-router.get("/register", (req, res) => {
-  res.render("register");
+router.get("/register", async (req, res) => {
+  const services = await servicesController.getAllServices();
+  res.render("pages/register", { services, stringLimiter, stringSlugify });
 });
 
 router.post("/register", async (req, res) => {
