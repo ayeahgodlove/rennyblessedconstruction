@@ -13,7 +13,7 @@ const teamsController = new TeamsController();
 teamRouter.get(
   "/",
   ensureAuthenticated,
-  checkRole(["admin", "super-admin"]),
+  checkRole(["admin", "super-admin"]), 
   async (req, res) => {
     const teams = await teamsController.getAllTeams();
     res.render("pages/admin/teams", { teams });
