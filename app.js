@@ -24,6 +24,11 @@ const categoryRouter = require("./routes/admin/category.route");
 const projectRouter = require("./routes/admin/project.route");
 const userRouter = require("./routes/admin/user.route");
 const pictureRouter = require("./routes/admin/picture.route");
+const ServicesController = require("./controllers/service.controller");
+const stringLimiter = require("./utils/string");
+const stringSlugify = require("./utils/string-slugify");
+
+const servicesController = new ServicesController();
 
 const port = process.env.SERVER_PORT;
 
@@ -39,10 +44,11 @@ app.use(bodyParser.json());
 
 // Middleware to serve static files
 app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, "public")));
+// Serve static files from the 'public' directory
+app.use("/static", express.static(path.join(__dirname, "public")));
 
-// Static folder
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// Serve the 'uploads' directory
+app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 
 // Express session middleware
 app.use(
@@ -93,6 +99,7 @@ app.use("/dashboard/pictures", pictureRouter);
 app.use("/dashboard/services", serviceRouter);
 app.use("/dashboard/testimonials", testimonialRouter);
 app.use("/dashboard/users", userRouter);
+app.use("/dashboard/teams", userRouter);
 
 // app.get(
 //   "/dashboard/users",
@@ -105,8 +112,17 @@ app.use("/dashboard/users", userRouter);
 app.use("/", authRoutes);
 
 // 404 route handler
-app.use((req, res, next) => {
-  res.status(404).render("pages/404", { title: "404 - Page Not Found" });
+app.use(async (req, res, next) => {
+  const services = await servicesController.getAllServices();
+
+  res
+    .status(404)
+    .render("pages/404", {
+      title: "404 - Page Not Found",
+      services,
+      stringLimiter,
+      stringSlugify,
+    });
 });
 
 // Error handling middleware
