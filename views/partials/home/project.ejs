@@ -2,7 +2,7 @@
 <section id="projects" class="projects section">
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
-    <h2>Our Realized Projects</h2>
+    <h2>Our Projects</h2>
     <p>
       Showcasing Our Commitment to Excellence in Construction and Engineering.
     </p>
@@ -40,8 +40,7 @@
         >
           <div class="portfolio-content h-100">
             <img
-              src="http://localhost:8088/uploads/pictures/<%= picture.imageUrl %>"
-              src="assets/img/projects/remodeling-1.jpg"
+              src="<%= APP_URL  %>/uploads/pictures/<%= picture.imageUrl %>"
               class="img-fluid"
               alt=""
             />
@@ -49,14 +48,14 @@
               <h4><%= picture.title %></h4>
               <!-- <p><%= getProject(picture.projectId).title %></p> -->
               <a
-                href="http://localhost:8088/uploads/pictures/<%= picture.imageUrl %>"
+                href="<%= APP_URL  %>/uploads/pictures/<%= picture.imageUrl %>"
                 title="<%= picture.title %>"
                 data-gallery="portfolio-gallery-app"
                 class="glightbox preview-link"
                 ><i class="bi bi-zoom-in"></i
               ></a>
               <a
-                href="/projects/<%= picture.projectId %>"
+                href="/projects/<%= stringSlugify(picture.title) %>"
                 title="More Details"
                 class="details-link"
                 ><i class="bi bi-link-45deg"></i

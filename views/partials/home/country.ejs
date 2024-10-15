@@ -13,10 +13,10 @@
             <div class="col-lg-6 col-xl-3 mb-5 mb-xl-0 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="country-item">
                     <div class="rounded overflow-hidden">
-                        <img src="http://localhost:8088/uploads/countries/<%= country.imageUrl %>" class="img-fluid w-100 rounded" alt="Image">
+                        <img src="<%= APP_URL  %>/uploads/countries/<%= country.imageUrl %>" class="img-fluid w-100 rounded" alt="Image">
                     </div>
                     <div class="country-flag">
-                        <img src="http://localhost:8088/uploads/countries/<%= country.flagUrl %>" class="img-fluid rounded-circle" alt="Image">
+                        <img src="<%= APP_URL  %>/uploads/countries/<%= country.flagUrl %>" class="img-fluid rounded-circle" alt="Image">
                     </div>
                     <div class="country-name">
                         <a href="#" class="text-white fs-4"><%= country.countryName %></a>

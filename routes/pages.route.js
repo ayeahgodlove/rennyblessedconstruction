@@ -5,6 +5,7 @@ const ServicesController = require("../controllers/service.controller");
 const ProjectsController = require("../controllers/project.controller");
 const stringLimiter = require("../utils/string");
 const stringSlugify = require("../utils/string-slugify");
+const deSlugify = require("../utils/string-deslugify");
 const {
   ensureAuthenticated,
 } = require("../config/middleware/is-authenticated.middleware");
@@ -17,6 +18,7 @@ const pagesRouter = express.Router();
 
 const { uploadFile } = require("../services/upload.config");
 const PicturesController = require("../controllers/picture.controller");
+const CategoriesController = require("../controllers/category.controller");
 
 // controllers
 const testimonialsController = new TestimonialsController();
@@ -24,6 +26,7 @@ const teamsController = new TeamsController();
 const servicesController = new ServicesController();
 const projectsController = new ProjectsController();
 const picturesController = new PicturesController();
+const categoriesController = new CategoriesController();
 
 pagesRouter.get("/", async (req, res) => {
   const testimonials = await testimonialsController.getAllTestimonials();
@@ -81,7 +84,33 @@ pagesRouter.get("/projects", async (req, res) => {
     stringSlugify,
     getProject,
     pictures,
-    services
+    services,
+  });
+});
+
+pagesRouter.get("/projects/:slug", async (req, res) => {
+  const projects = await projectsController.getAllProjects();
+  const { slug } = req.params;
+  const title = deSlugify(slug);
+
+  const project = await projectsController.getProjectByTitle(title);
+  const pictures = await picturesController.getAllPictures();
+  const services = await servicesController.getAllServices();
+  const getCategory =  await categoriesController.getCategory;
+
+
+  const projectPictures =  pictures.filter(p => p.projectId === project.id)
+
+  res.render("pages/project-details", {
+    pageTitle: "Projects",
+    uri: "Projects",
+    projects,
+    stringLimiter,
+    stringSlugify,
+    projectPictures,
+    services,
+    project,
+    getCategory
   });
 });
 
@@ -104,6 +133,24 @@ pagesRouter.get("/services", async (req, res) => {
     uri: "Service",
     services,
     testimonials,
+    stringLimiter,
+    stringSlugify,
+  });
+});
+
+pagesRouter.get("/services/:slug", async (req, res) => {
+  const { slug } = req.params;
+  const title = deSlugify(slug);
+  const services = await servicesController.getAllServices();
+  const service = await servicesController.getServiceByTitle(title);
+  const testimonials = await testimonialsController.getAllTestimonials();
+
+  res.render("pages/service-details", {
+    pageTitle: "Services",
+    uri: "Service",
+    services,
+    testimonials,
+    service,
     stringLimiter,
     stringSlugify,
   });

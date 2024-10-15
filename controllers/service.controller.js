@@ -22,6 +22,19 @@ class ServicesController {
     }
   }
 
+  async getServiceByTitle(title) {
+    try {
+      const service = await Service.findOne({ title });
+
+      if (!service) {
+        throw Error("Service not found!");
+      }
+      return service;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async createService(service) {
     try {
       const createdService = await Service.create(service);

@@ -27,6 +27,7 @@ const pictureRouter = require("./routes/admin/picture.route");
 const ServicesController = require("./controllers/service.controller");
 const stringLimiter = require("./utils/string");
 const stringSlugify = require("./utils/string-slugify");
+const APP_URL = require("./config/constact");
 
 const servicesController = new ServicesController();
 
@@ -72,6 +73,7 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
+  res.locals.APP_URL = APP_URL || "rennyblessedconstruction.com";
   next();
 });
 
@@ -115,14 +117,12 @@ app.use("/", authRoutes);
 app.use(async (req, res, next) => {
   const services = await servicesController.getAllServices();
 
-  res
-    .status(404)
-    .render("pages/404", {
-      title: "404 - Page Not Found",
-      services,
-      stringLimiter,
-      stringSlugify,
-    });
+  res.status(404).render("pages/404", {
+    title: "404 - Page Not Found",
+    services,
+    stringLimiter,
+    stringSlugify,
+  });
 });
 
 // Error handling middleware
