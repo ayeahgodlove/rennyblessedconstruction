@@ -42,11 +42,11 @@
             ><img
               height="50"
               width="50"
-              src="http://localhost:8088/uploads/services/<%= service.imageUrl %>"
+              src="<%= APP_URL  %>/uploads/services/<%= service.imageUrl %>"
               alt="<%= service.title %>"
           /></i>
           <div>
-            <h4><a href="" class="stretched-link"><%= service.title %></a></h4>
+            <h4><a href="/services/<%= stringSlugify(service.title) %>" class="stretched-link"><%= service.title %></a></h4>
             <p><%= stringLimiter(service.description, 100) %></p>
           </div>
         </div>

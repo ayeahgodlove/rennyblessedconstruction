@@ -1,8 +1,7 @@
 const slugify = require("slugify");
 
 function stringSlugify(str) {
-    return slugify(str.toLowerCase());
-  }
-  
-  module.exports = stringSlugify;
-  
+  return slugify(str.toLowerCase());
+}
+
+module.exports = stringSlugify;

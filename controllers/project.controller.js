@@ -28,6 +28,20 @@ class ProjectsController {
     }
   }
 
+  async getProjectByTitle(title) {
+    try {
+      const project = await Project.findOne({ title });
+
+      if (!project) {
+        throw Error("Project not found!");
+      }
+      return project;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
   async createProject(project) {
     try {
       const createdProject = await Project.create(project);
