@@ -145,6 +145,7 @@ pagesRouter.get("/services/:slug", async (req, res) => {
   const service = await servicesController.getServiceByTitle(title);
   const testimonials = await testimonialsController.getAllTestimonials();
 
+  console.log("title: ", title)
   res.render("pages/service-details", {
     pageTitle: "Services",
     uri: "Service",

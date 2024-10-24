@@ -24,8 +24,8 @@ class ServicesController {
 
   async getServiceByTitle(title) {
     try {
-      const service = await Service.findOne({ title });
-
+      const service = await Service.findOne({ where: { title } });
+      console.log("service: ", service, title)
       if (!service) {
         throw Error("Service not found!");
       }

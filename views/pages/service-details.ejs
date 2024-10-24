@@ -25,9 +25,13 @@
           <div class="services-list">
             <a href="#" class="active"><%= service.title %></a>
 
-            <!-- <% services.forEach(item => { %>
-            <a href="<%= stringSlugify(item.title) %>"><%= item.title %></a>
-            <% }) %> -->
+            <% services.forEach(item => { %>
+              <% if (item.title == service.title) { %>
+                <br />
+              <% } else { %>
+                <a href="<%= stringSlugify(item.title) %>"><%= item.title %></a>
+              <% } %>
+            <% }) %>
           </div>
         </div>
 
@@ -37,8 +41,12 @@
             alt="<%= service.title %>"
             class="img-fluid services-img"
           />
-          <h3><%= service.title %></h3>
-          <p class="mt-3"><%= service.description %></p>
+          <h3>
+            <%= service.title %>
+          </h3>
+          <p class="mt-3">
+            <%= service.description %>
+          </p>
         </div>
       </div>
     </div>

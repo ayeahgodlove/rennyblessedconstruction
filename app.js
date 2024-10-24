@@ -28,6 +28,7 @@ const ServicesController = require("./controllers/service.controller");
 const stringLimiter = require("./utils/string");
 const stringSlugify = require("./utils/string-slugify");
 const APP_URL = require("./config/constact");
+const teamRouter = require("./routes/admin/team.route");
 
 const servicesController = new ServicesController();
 
@@ -101,7 +102,7 @@ app.use("/dashboard/pictures", pictureRouter);
 app.use("/dashboard/services", serviceRouter);
 app.use("/dashboard/testimonials", testimonialRouter);
 app.use("/dashboard/users", userRouter);
-app.use("/dashboard/teams", userRouter);
+app.use("/dashboard/teams", teamRouter);
 
 // app.get(
 //   "/dashboard/users",
