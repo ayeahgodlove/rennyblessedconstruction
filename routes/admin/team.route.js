@@ -16,7 +16,7 @@ teamRouter.get(
   checkRole(["admin", "super-admin"]), 
   async (req, res) => {
     const teams = await teamsController.getAllTeams();
-    res.render("pages/admin/teams", { teams });
+    res.render("pages/admin/teams", { teams }); 
   }
 );
 

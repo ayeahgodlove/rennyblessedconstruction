@@ -41,7 +41,6 @@ serviceRouter.post(
         serviceData.imageUrl = req.file.filename;
       }
       await servicesController.createService(serviceData);
-      // res.render("pages/admin/services/create");
       res.redirect("/dashboard/services");
     } catch (error) {
       res.status(500).send(error.message);
