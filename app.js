@@ -27,7 +27,7 @@ const pictureRouter = require("./routes/admin/picture.route");
 const ServicesController = require("./controllers/service.controller");
 const stringLimiter = require("./utils/string");
 const stringSlugify = require("./utils/string-slugify");
-const APP_URL = require("./config/constact");
+const APP_URL = require("./config/constant");
 const teamRouter = require("./routes/admin/team.route");
 
 const servicesController = new ServicesController();
