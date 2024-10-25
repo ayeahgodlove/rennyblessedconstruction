@@ -74,7 +74,7 @@ app.use((req, res, next) => {
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
-  res.locals.APP_URL = APP_URL || "rennyblessedconstruction.com";
+  res.locals.APP_URL = APP_URL || "https://www.rennyblessedconstruction.com";
   next();
 });
 
