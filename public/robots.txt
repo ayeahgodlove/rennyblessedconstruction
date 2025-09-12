@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /dashboard/
+Disallow: /login
+Disallow: /register
+Disallow: /admin/
+Disallow: /api/
+
+# Allow important pages
+Allow: /
+Allow: /about-us
+Allow: /services
+Allow: /projects
+Allow: /contact-us
+Allow: /testimonials
+
+# Allow static assets
+Allow: /assets/
+Allow: /public/
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://rbconstruction.com/sitemap.xml
+
+# Additional directives for better SEO
+Host: https://rbconstruction.com

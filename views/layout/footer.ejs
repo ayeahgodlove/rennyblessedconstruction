@@ -3,30 +3,45 @@
   <div class="container footer-top">
     <div class="row gy-4">
       <div class="col-lg-4 col-md-6 footer-about">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <span class="sitename">RB Construction</span>
+        <a href="/" class="logo d-flex align-items-center mb-3">
+          <img height="50" width="60" src="/assets/logo.png" class="image-fluid me-2" alt="RB Construction">
+          <div>
+            <span class="sitename fw-bold">RB Construction</span>
+            <br><small class="text-muted">Engineering Associate</small>
+          </div>
         </a>
-        <div class="footer-contact pt-3">
-          <p>Nkwen Bamenda, Cameroon.</p>
-          <p class="mt-3"><Strong>Telephone Lines</Strong></p>
-          <p><span><a href="tel:+237675729438" class="text-reset text-decoration-none">(+237) 675 729 438</a></span></p>
-          <p><span><a href="tel:+237675915134" class="text-reset text-decoration-none">(+237) 675 915 134 </a></span></p>
-          <p><span><a href="tel:+237697279497" class="text-reset text-decoration-none">(+237) 697 279 497 </a></span></p>
-          <p><span><a href="mailto:rennyblessedconstruction@gmail.com">rennyblessedconstruction@gmail.com</a></span></p>
+        <p class="mb-3">Empowering innovation through comprehensive consultancy, construction, and project management
+          services across Cameroon.</p>
+        <div class="footer-contact">
+          <div class="contact-item d-flex align-items-center mb-2">
+            <i class="bi bi-geo-alt-fill me-2 text-warning"></i>
+            <span>Nkwen Bamenda, Cameroon</span>
+          </div>
+          <div class="contact-item d-flex align-items-center mb-2">
+            <i class="bi bi-telephone-fill me-2 text-warning"></i>
+            <a href="tel:+237675729438" class="text-reset text-decoration-none">(+237) 675 729 438</a>
+          </div>
+          <div class="contact-item d-flex align-items-center mb-2">
+            <i class="bi bi-envelope-fill me-2 text-warning"></i>
+            <a href="mailto:rennyblessedconstruction@gmail.com"
+              class="text-reset text-decoration-none">rennyblessedconstruction@gmail.com</a>
+          </div>
         </div>
         <div class="social-links d-flex mt-4">
-          <a href=""><i class="bi bi-twitter-x"></i></a>
-          <a href=""><i class="bi bi-facebook"></i></a>
-          <a href=""><i class="bi bi-instagram"></i></a>
-          <a href=""><i class="bi bi-linkedin"></i></a>
+          <a href="https://m.facebook.com/100083945796508/about/" target="_blank" rel="noopener noreferrer" class="social-link me-3" title="Visit RB Construction Facebook Page"><i class="bi bi-facebook"></i></a>
+          <a href="https://m.facebook.com/100083945796508/about/" target="_blank" rel="noopener noreferrer" class="social-link me-3" title="Visit RB Construction Facebook Page"><i class="bi bi-twitter-x"></i></a>
+          <a href="https://m.facebook.com/100083945796508/about/" target="_blank" rel="noopener noreferrer" class="social-link me-3" title="Visit RB Construction Facebook Page"><i class="bi bi-instagram"></i></a>
+          <a href="https://m.facebook.com/100083945796508/about/" target="_blank" rel="noopener noreferrer" class="social-link" title="Visit RB Construction Facebook Page"><i class="bi bi-linkedin"></i></a>
         </div>
       </div>
 
       <div class="col-lg-4 col-md-3 footer-links">
         <h4>Our Services</h4>
         <ul>
-          <% services.forEach(service => { %>
-            <li><a href="/services/<%= stringSlugify(service.title) %>"><%= service.title %></a></li>
+          <% services.forEach(service=> { %>
+            <li><a href="/services/<%= stringSlugify(service.title) %>">
+                <%= service.title %>
+              </a></li>
             <% }) %>
         </ul>
       </div>
@@ -45,33 +60,118 @@
     </div>
   </div>
 
-  <div class="container copyright text-center mt-4">
-    <p>© <span>Copyright</span> <strong class="px-1 sitename">RB Construction</strong> <span>All Rights Reserved</span></p>
+  <div class="container copyright text-center mt-4 pt-4 border-top border-secondary">
+    <p class="mb-2">© <span>Copyright</span> <strong class="px-1 sitename">RB Construction & Engineering
+        Associate</strong> <span>All Rights Reserved</span></p>
     <div class="credits">
-      Designed by <a href="https://www.cumitech.com/">Cumi</a>
+      <small>Designed with ❤️ by <a href="https://www.cumi.dev/" class="text-warning">CumiTech</a></small>
     </div>
   </div>
 
 </footer>
 
 <!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+    class="bi bi-arrow-up-short"></i></a>
 
 <!-- Preloader -->
 <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
-  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- <script src="/assets/vendor/php-email-form/validate.js"></script> -->
-  <script src="/assets/vendor/aos/aos.js"></script>
-  <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="/assets/vendor/php-email-form/validate.js"></script> -->
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
 
-  <!-- Main JS File -->
-  <script src="/assets/js/main.js"></script>
+<!-- Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+<!-- Floating Support Button -->
+<div class="floating-support">
+  <div class="support-button" id="supportButton">
+    <i class="bi bi-headset"></i>
+    <span class="support-text">Need Help?</span>
+  </div>
+
+  <div class="support-menu" id="supportMenu">
+    <div class="support-option" onclick="openWhatsApp()">
+      <i class="bi bi-whatsapp"></i>
+      <span>WhatsApp</span>
+    </div>
+    <div class="support-option" onclick="makeCall()">
+      <i class="bi bi-telephone"></i>
+      <span>Call Now</span>
+    </div>
+    <div class="support-option" onclick="sendEmail()">
+      <i class="bi bi-envelope"></i>
+      <span>Email Us</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Support button functionality
+  const supportButton = document.getElementById('supportButton');
+  const supportMenu = document.getElementById('supportMenu');
+  let isMenuOpen = false;
+
+  supportButton.addEventListener('click', function () {
+    isMenuOpen = !isMenuOpen;
+    if (isMenuOpen) {
+      supportMenu.style.display = 'block';
+      supportMenu.style.opacity = '1';
+      supportMenu.style.transform = 'translateY(-10px)';
+      supportButton.classList.add('active');
+    } else {
+      supportMenu.style.opacity = '0';
+      supportMenu.style.transform = 'translateY(0)';
+      supportButton.classList.remove('active');
+      setTimeout(() => {
+        if (!isMenuOpen) {
+          supportMenu.style.display = 'none';
+        }
+      }, 300);
+    }
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', function (event) {
+    if (!event.target.closest('.floating-support')) {
+      isMenuOpen = false;
+      supportMenu.style.opacity = '0';
+      supportMenu.style.transform = 'translateY(0)';
+      supportButton.classList.remove('active');
+      setTimeout(() => {
+        supportMenu.style.display = 'none';
+      }, 300);
+    }
+  });
+
+  // Contact functions
+  function openWhatsApp() {
+    const phoneNumber = '237675729438'; // Remove + for WhatsApp
+    const message = 'Hello! I\'m interested in your construction services. Can you help me?';
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  function makeCall() {
+    const phoneNumber = '+237675729438';
+    window.open(`tel:${phoneNumber}`, '_self');
+  }
+
+  function sendEmail() {
+    const email = 'rennyblessedconstruction@gmail.com';
+    const subject = 'Construction Inquiry';
+    const body = 'Hello, I would like to inquire about your construction services.';
+    const mailtoUrl = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoUrl, '_self');
+  }
+</script>
 
 </body>
 

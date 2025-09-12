@@ -13,30 +13,169 @@
 
   <div class="container">
     <div class="row gy-4">
-      <% projects.forEach(project => { %>
+      <!-- Project 1: Modern Residential Villa -->
       <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-        <div class="card-item">
+        <div class="card-item card-modern">
           <div class="row">
             <div class="col-xl-5">
               <div class="card-bg">
                 <img
-                  src="<%= APP_URL %>/assets/uploads/pictures/<%= project.pictures[0].imageUrl %>"
-                  alt=""
+                  src="/assets/img/projects-dir/IMG_20221028_163043_993.jpg"
+                  alt="Modern Residential Villa Construction"
                 />
               </div>
             </div>
             <div class="col-xl-7 d-flex align-items-center">
               <div class="card-body">
-                <h4 class="card-title"><%= project.title %></h4>
-                <p><%= stringLimiter(project.description, 200) %></p>
+                <h4 class="card-title">Modern Residential Villa</h4>
+                <p class="text-muted small mb-2">Bamenda, Cameroon</p>
+                <p>A luxurious 4-bedroom villa featuring contemporary architectural design with modern amenities. This project showcases our expertise in high-end residential construction, incorporating sustainable building practices and premium finishes.</p>
+                <div class="project-tags">
+                  <span class="badge bg-warning me-1">Residential</span>
+                  <span class="badge bg-secondary me-1">Modern Design</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <% }) %>
 
-      <!-- End Card Item -->
+      <!-- Project 2: Commercial Office Building -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-item card-modern">
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="card-bg">
+                <img
+                  src="/assets/img/projects-dir/IMG_20230401_173224_883.jpg"
+                  alt="Commercial Office Building"
+                />
+              </div>
+            </div>
+            <div class="col-xl-7 d-flex align-items-center">
+              <div class="card-body">
+                <h4 class="card-title">Commercial Office Building</h4>
+                <p class="text-muted small mb-2">Nkwen Business District</p>
+                <p>A state-of-the-art 3-story commercial complex designed for modern business operations. Features include open-plan offices, conference facilities, and energy-efficient systems that meet international standards.</p>
+                <div class="project-tags">
+                  <span class="badge bg-primary me-1">Commercial</span>
+                  <span class="badge bg-info me-1">Office Space</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Educational Facility -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-item card-modern">
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="card-bg">
+                <img
+                  src="/assets/img/projects-dir/IMG_20230718_143744_352.jpg"
+                  alt="Educational Facility Construction"
+                />
+              </div>
+            </div>
+            <div class="col-xl-7 d-flex align-items-center">
+              <div class="card-body">
+                <h4 class="card-title">Educational Facility</h4>
+                <p class="text-muted small mb-2">Primary School Construction</p>
+                <p>A comprehensive educational complex featuring 12 classrooms, administrative offices, library, and playground facilities. Built with child-safe materials and designed to accommodate 300+ students with modern learning environments.</p>
+                <div class="project-tags">
+                  <span class="badge bg-success me-1">Education</span>
+                  <span class="badge bg-warning me-1">Community</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Religious Building -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="card-item card-modern">
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="card-bg">
+                <img
+                  src="/assets/img/projects-dir/IMG_20240104_100618_570.jpg"
+                  alt="Religious Building Construction"
+                />
+              </div>
+            </div>
+            <div class="col-xl-7 d-flex align-items-center">
+              <div class="card-body">
+                <h4 class="card-title">Religious Building</h4>
+                <p class="text-muted small mb-2">Community Church Construction</p>
+                <p>A beautiful community church designed to accommodate 500+ worshippers. Features include a main sanctuary, fellowship hall, offices, and modern audio-visual systems. Built with traditional and contemporary architectural elements.</p>
+                <div class="project-tags">
+                  <span class="badge bg-dark me-1">Religious</span>
+                  <span class="badge bg-secondary me-1">Community</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: Residential Complex Design -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+        <div class="card-item card-modern">
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="card-bg">
+                <img
+                  src="/assets/img/projects-dir/IMG_20230624_133725_621.jpg"
+                  alt="Residential Complex Design"
+                />
+              </div>
+            </div>
+            <div class="col-xl-7 d-flex align-items-center">
+              <div class="card-body">
+                <h4 class="card-title">Residential Complex Design</h4>
+                <p class="text-muted small mb-2">Multi-Unit Housing Project</p>
+                <p>An innovative housing development featuring 20 modern apartments with shared amenities. Includes parking facilities, green spaces, and community areas. Designed for sustainable living with energy-efficient systems and eco-friendly materials.</p>
+                <div class="project-tags">
+                  <span class="badge bg-warning me-1">Residential</span>
+                  <span class="badge bg-success me-1">Sustainable</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6: Complete Home Renovation -->
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
+        <div class="card-item card-modern">
+          <div class="row">
+            <div class="col-xl-5">
+              <div class="card-bg">
+                <img
+                  src="/assets/img/projects-dir/IMG_20230624_140208_901.jpg"
+                  alt="Complete Home Renovation"
+                />
+              </div>
+            </div>
+            <div class="col-xl-7 d-flex align-items-center">
+              <div class="card-body">
+                <h4 class="card-title">Complete Home Renovation</h4>
+                <p class="text-muted small mb-2">Traditional to Modern Transformation</p>
+                <p>A comprehensive renovation project transforming a traditional family home into a modern living space. Includes structural improvements, updated electrical and plumbing systems, modern kitchen and bathroom designs, and contemporary finishes throughout.</p>
+                <div class="project-tags">
+                  <span class="badge bg-info me-1">Renovation</span>
+                  <span class="badge bg-primary me-1">Modernization</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End Card Items -->
     </div>
   </div>
 </section>

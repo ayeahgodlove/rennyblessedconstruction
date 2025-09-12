@@ -4,13 +4,13 @@
   <!-- Page Title -->
   <div
     class="page-title dark-background"
-    style="background-image: url(assets/img/page-title-bg.jpg)"
+    style="background: linear-gradient(135deg, rgba(26, 37, 47, 0.8) 0%, rgba(44, 62, 80, 0.8) 100%), url(assets/img/page-title-bg.jpg) center/cover no-repeat"
   >
     <div class="container position-relative">
-      <h1>Services</h1>
+      <h1 class="heading-modern">Our <span class="text-gradient">Services</span></h1>
       <nav class="breadcrumbs">
         <ol>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li class="current">Services</li>
         </ol>
       </nav>
@@ -21,38 +21,45 @@
   <!-- Services Section -->
   <section id="services" class="services section light-background">
     <div class="container">
+      <!-- Section Title -->
+      <div class="section-title mb-5" data-aos="fade-up">
+        <h2 class="heading-modern">Comprehensive <span class="text-gradient">Construction Solutions</span></h2>
+        <p class="lead">
+          From initial consultation to project completion, we provide end-to-end construction 
+          and engineering services that exceed expectations and deliver lasting value.
+        </p>
+      </div>
+      <!-- End Section Title -->
+      
       <div class="row gy-4">
         <% services.forEach(service => { %>
         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="service-item position-relative">
-            <div class="icon">
-              <!-- <i class="fa-solid fa-mountain-city"></i> -->
-              <i class="flex-shrink-0"
-                ><img
-                  height="50"
-                  width="50"
+          <div class="service-item card-modern h-100">
+            <div class="service-header d-flex align-items-center mb-3">
+              <div class="service-icon me-3">
+                <img
+                  height="60"
+                  width="60"
                   src="<%= APP_URL %>/assets/uploads/services/<%= service.imageUrl %>"
                   alt="<%= service.title %>"
-              /></i>
+                  class="img-fluid"
+                />
+              </div>
+              <h4 class="mb-0"><%= service.title %></h4>
             </div>
-            <h3><%= service.title %></h3>
-            <p><%= stringLimiter(service.description, 100) %></p>
-            <a href="/services/<%= stringSlugify(service.title) %>" class="readmore stretched-link"
-              >Read more <i class="bi bi-arrow-right"></i
-            ></a>
+            <p class="text-muted mb-3"><%= stringLimiter(service.description, 120) %></p>
+            <a href="/services/<%= stringSlugify(service.title) %>" class="btn btn-outline-warning btn-sm">
+              Learn More <i class="bi bi-arrow-right ms-1"></i>
+            </a>
           </div>
         </div>
         <% }) %>
-
         <!-- End Service Item -->
       </div>
     </div>
   </section>
   <!-- /Services Section -->
 
-  <!-- Testimonials Section -->
-  <%- include("../partials/home/testimonial") %>
-  <!-- /Testimonials Section -->
 </main>
 
 <%- include("../layout/footer") %>

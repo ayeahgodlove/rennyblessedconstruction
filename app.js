@@ -2,7 +2,6 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
-const { dbAuthenticate } = require("./services/database.config");
 const session = require("express-session");
 
 require("dotenv").config();
@@ -29,6 +28,7 @@ const stringLimiter = require("./utils/string");
 const stringSlugify = require("./utils/string-slugify");
 const APP_URL = require("./config/constant");
 const teamRouter = require("./routes/admin/team.route");
+const formsRouter = require("./routes/forms");
 
 const servicesController = new ServicesController();
 
@@ -81,11 +81,13 @@ app.use((req, res, next) => {
 /**
  * connect to database
  */
-// Test the connection
-dbAuthenticate();
+// // Test the connection
+// dbAuthenticate();
 
 // pages routes
 app.use("/", pagesRouter);
+// form submission routes
+app.use("/api/forms", formsRouter);
 // admin dashboard
 app.get(
   "/dashboard",

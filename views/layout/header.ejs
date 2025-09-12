@@ -4,54 +4,255 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - UpConstruction Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+
+  <!-- Primary Meta Tags -->
+  <title>
+    <%= typeof title !=='undefined' ? title : 'RB Construction & Engineering - Professional Construction Services' %>
+  </title>
+  <meta name="title"
+    content="<%= typeof title !== 'undefined' ? title : 'RB Construction & Engineering - Professional Construction Services' %>">
+  <meta name="description"
+    content="<%= typeof description !== 'undefined' ? description : 'RB Construction & Engineering Associate - Professional construction, engineering, and project management services in Cameroon. Quality craftsmanship and innovative solutions.' %>">
+  <meta name="keywords"
+    content="<%= typeof keywords !== 'undefined' ? keywords : 'construction, engineering, Cameroon, building, project management, architectural design, structural engineering, real estate development, Bamenda construction, construction company Cameroon' %>">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="<%= typeof canonical !== 'undefined' ? canonical : 'https://rbconstruction.com' %>">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<%= typeof canonical !== 'undefined' ? canonical : 'https://rbconstruction.com' %>">
+  <meta property="og:title"
+    content="<%= typeof ogTitle !== 'undefined' ? ogTitle : 'RB Construction & Engineering - Building Dreams, Creating Futures' %>">
+  <meta property="og:description"
+    content="<%= typeof ogDescription !== 'undefined' ? ogDescription : 'Professional construction and engineering services in Cameroon. From architectural design to project completion, we deliver excellence in every project.' %>">
+  <meta property="og:image"
+    content="<%= typeof ogImage !== 'undefined' ? ogImage : 'https://rbconstruction.com/assets/img/hero-carousel/hero-carousel-1.jpg' %>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="RB Construction & Engineering - Professional Construction Services">
+  <meta property="og:site_name" content="RB Construction & Engineering">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url"
+    content="<%= typeof canonical !== 'undefined' ? canonical : 'https://rbconstruction.com' %>">
+  <meta property="twitter:title"
+    content="<%= typeof ogTitle !== 'undefined' ? ogTitle : 'RB Construction & Engineering - Building Dreams, Creating Futures' %>">
+  <meta property="twitter:description"
+    content="<%= typeof ogDescription !== 'undefined' ? ogDescription : 'Professional construction and engineering services in Cameroon. From architectural design to project completion, we deliver excellence in every project.' %>">
+  <meta property="twitter:image"
+    content="<%= typeof ogImage !== 'undefined' ? ogImage : 'https://rbconstruction.com/assets/img/hero-carousel/hero-carousel-1.jpg' %>">
+  <meta property="twitter:image:alt" content="RB Construction & Engineering - Professional Construction Services">
+  <meta property="twitter:site" content="@rbconstruction">
+  <meta property="twitter:creator" content="@rbconstruction">
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
+  <meta name="author" content="RB Construction & Engineering Associate">
+  <meta name="publisher" content="RB Construction & Engineering Associate">
+  <meta name="copyright" content="RB Construction & Engineering Associate">
+  <meta name="language" content="en">
+  <meta name="revisit-after" content="7 days">
+  <meta name="rating" content="general">
+  <meta name="distribution" content="global">
+  <meta name="target" content="all">
+
+  <!-- Geographic Meta Tags -->
+  <meta name="geo.region" content="CM-NW">
+  <meta name="geo.placename" content="Bamenda, Cameroon">
+  <meta name="geo.position" content="5.9581;10.1517">
+  <meta name="ICBM" content="5.9581, 10.1517">
+
+  <!-- Mobile App Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="RB Construction">
+
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#ff6b35">
+  <meta name="msapplication-TileColor" content="#ff6b35">
+  <meta name="msapplication-navbutton-color" content="#ff6b35">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "RB Construction & Engineering Associate",
+    "alternateName": "RB Construction",
+    "url": "https://rbconstruction.com",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://rbconstruction.com/assets/logo.png",
+      "width": 90,
+      "height": 70
+    },
+    "image": [
+      "https://rbconstruction.com/assets/img/hero-carousel/hero-carousel-1.jpg",
+      "https://rbconstruction.com/assets/img/hero-carousel/hero-carousel-2.jpg",
+      "https://rbconstruction.com/assets/img/hero-carousel/hero-carousel-3.jpg"
+    ],
+    "description": "Professional construction and engineering services in Cameroon",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nkwen",
+      "addressLocality": "Bamenda",
+      "addressRegion": "Northwest Region",
+      "addressCountry": "CM"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+237675729438",
+      "contactType": "customer service",
+      "email": "rennyblessedconstruction@gmail.com",
+      "availableLanguage": "English"
+    },
+    "sameAs": [
+      "https://m.facebook.com/100083945796508/about/"
+    ],
+    "foundingDate": "2014",
+    "slogan": "Building Dreams, Creating Futures",
+    "knowsAbout": [
+      "Construction",
+      "Engineering",
+      "Project Management",
+      "Architectural Design",
+      "Structural Engineering",
+      "Real Estate Development"
+    ],
+    "areaServed": {
+      "@type": "Country",
+      "name": "Cameroon"
+    },
+    "serviceType": [
+      "Construction Services",
+      "Engineering Services",
+      "Project Management",
+      "Architectural Design"
+    ]
+  }
+  </script>
 
   <!-- Favicons -->
   <link href="/assets/img/favicon.ico" rel="icon">
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/assets/img/android-chrome-192x192.png" rel="icon" sizes="192x192">
+  <link href="/assets/img/android-chrome-512x512.png" rel="icon" sizes="512x512">
+  <link href="/assets/img/site.webmanifest" rel="manifest">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  
-    <!-- Vendor CSS Files -->
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  
-    <!-- Main CSS File -->
-    <link href="/assets/css/main.css" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="/assets/css/main.css" rel="stylesheet">
 </head>
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+  <header id="header" class="header fixed-top">
+    <!-- Top Bar -->
+    <div class="top-bar bg-dark text-white py-2 d-none d-lg-block">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-geo-alt-fill me-2 text-warning"></i>
+              <span class="small">Nkwen, Bamenda, Cameroon</span>
+            </div>
+          </div>
+          <div class="col-md-6 text-end">
+            <div class="d-flex align-items-center justify-content-end">
+              <a href="tel:+237675729438" class="text-white text-decoration-none me-3">
+                <i class="bi bi-telephone-fill me-1 text-warning"></i>
+                <span class="small">+237 675 729 438</span>
+              </a>
+              <a href="mailto:rennyblessedconstruction@gmail.com" class="text-white text-decoration-none">
+                <i class="bi bi-envelope-fill me-1 text-warning"></i>
+                <span class="small">rennyblessedconstruction@gmail.com</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <a href="/" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img height="80" width="100" src="/assets/logo.png" class="image-fluid" alt="RENNYBLESSED CONSTRUCTION AND ENGINEERING ASSOCIATE RBEC Ltd">
-        <h1 class="sitename d-none d-md-block">RB Construction</h1> <span>.</span>
-      </a>
+    <!-- Main Header -->
+    <div class="main-header">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light py-3">
+          <!-- Logo -->
+          <a class="navbar-brand d-flex align-items-center" href="/">
+            <img src="/assets/logo.png" alt="RB Construction & Engineering" height="60" width="80" class="me-3">
+            <div class="brand-text">
+              <h4 class="brand-name mb-0 fw-bold text-dark">RB Construction</h4>
+              <small class="brand-subtitle text-muted">Engineering Associate</small>
+            </div>
+          </a>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li>
-            <a href="/" class="<%= (requestPath === '/') ? 'active' : '' %>">Home</a>
-          </li>
-          <li><a href="/about-us" class="<%= (requestPath === '/about-us') ? 'active' : '' %>">About</a></li>
-          <li><a href="/services" class="<%= (requestPath === '/services') ? 'active' : '' %>">Service</a></li>
-          <li><a href="/projects" class="<%= (requestPath === '/projects') ? 'active' : '' %>">Projects</a></li>
-          <li><a href="/contact-us" class="<%= (requestPath === '/contact-us') ? 'active' : '' %>">Contact</a></li>
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+          <!-- Mobile Toggle Button -->
+          <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
+          <!-- Navigation Menu -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+              <li class="nav-item">
+                <a class="nav-link fw-semibold px-3 py-2 position-relative" href="/">
+                  <span class="<%= (requestPath === '/') ? 'active' : '' %>">Home</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-semibold px-3 py-2 position-relative" href="/about-us">
+                  <span class="<%= (requestPath === '/about-us') ? 'active' : '' %>">About</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link fw-semibold px-3 py-2 dropdown-toggle position-relative" href="/services" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="<%= (requestPath === '/services') ? 'active' : '' %>">Services</span>
+                </a>
+                <ul class="dropdown-menu shadow-lg border-0 rounded-3">
+                  <li><a class="dropdown-item py-2" href="/services#residential">Residential Construction</a></li>
+                  <li><a class="dropdown-item py-2" href="/services#commercial">Commercial Building</a></li>
+                  <li><a class="dropdown-item py-2" href="/services#renovation">Renovation & Remodeling</a></li>
+                  <li><a class="dropdown-item py-2" href="/services#engineering">Engineering Services</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-semibold px-3 py-2 position-relative" href="/projects">
+                  <span class="<%= (requestPath === '/projects') ? 'active' : '' %>">Projects</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fw-semibold px-3 py-2 position-relative" href="/contact-us">
+                  <span class="<%= (requestPath === '/contact-us') ? 'active' : '' %>">Contact</span>
+                </a>
+              </li>
+              <li class="nav-item ms-3">
+                <a href="/contact-us" class="btn btn-warning btn-modern px-4 py-2 rounded-pill fw-semibold text-dark">
+                  <i class="bi bi-telephone-fill me-2"></i>Get Quote
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </div>
   </header>

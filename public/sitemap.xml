@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd
+        http://www.google.com/schemas/sitemap-image/1.1
+        http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://rbconstruction.com/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://rbconstruction.com/assets/img/hero-carousel/hero-carousel-1.jpg</image:loc>
+      <image:title>RB Construction & Engineering - Professional Construction Services</image:title>
+      <image:caption>Professional construction and engineering services in Cameroon</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rbconstruction.com/assets/img/hero-carousel/hero-carousel-2.jpg</image:loc>
+      <image:title>Construction Projects</image:title>
+      <image:caption>Quality construction projects across Cameroon</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rbconstruction.com/assets/img/hero-carousel/hero-carousel-3.jpg</image:loc>
+      <image:title>Engineering Excellence</image:title>
+      <image:caption>Professional engineering solutions</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://rbconstruction.com/about-us</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://rbconstruction.com/assets/img/about.jpg</image:loc>
+      <image:title>About RB Construction Team</image:title>
+      <image:caption>Meet our professional construction team</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Services Page -->
+  <url>
+    <loc>https://rbconstruction.com/services</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://rbconstruction.com/assets/img/services/service-1.jpg</image:loc>
+      <image:title>Construction Services</image:title>
+      <image:caption>Comprehensive construction and engineering services</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Projects Page -->
+  <url>
+    <loc>https://rbconstruction.com/projects</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://rbconstruction.com/assets/img/projects-dir/IMG_20221028_163043_993.jpg</image:loc>
+      <image:title>Construction Project Portfolio</image:title>
+      <image:caption>Our completed construction projects</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rbconstruction.com/assets/img/projects-dir/IMG_20230401_173224_883.jpg</image:loc>
+      <image:title>Engineering Projects</image:title>
+      <image:caption>Professional engineering solutions</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://rbconstruction.com/assets/img/projects-dir/IMG_20230624_133725_621.jpg</image:loc>
+      <image:title>Design Projects</image:title>
+      <image:caption>Architectural design excellence</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Contact Page -->
+  <url>
+    <loc>https://rbconstruction.com/contact-us</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://rbconstruction.com/assets/img/contact-bg.jpg</image:loc>
+      <image:title>Contact RB Construction</image:title>
+      <image:caption>Get in touch for your construction needs</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Testimonials Page -->
+  <url>
+    <loc>https://rbconstruction.com/testimonials</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+</urlset>

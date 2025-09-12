@@ -1,61 +1,126 @@
 <div class="col-lg-6">
   <form
-    action="forms/contact.php"
-    method="post"
+    id="contactForm"
     class="php-email-form"
     data-aos="fade-up"
     data-aos-delay="400"
   >
     <div class="row gy-4">
       <div class="col-md-6">
-        <input
-          type="text"
-          name="name"
-          class="form-control"
-          placeholder="Your Name"
-          required=""
-        />
+        <div class="form-floating">
+          <input
+            type="text"
+            name="name"
+            class="form-control"
+            placeholder="Your Name"
+            required=""
+            id="contactName"
+          />
+          <label for="contactName">Your Name</label>
+        </div>
       </div>
 
       <div class="col-md-6">
-        <input
-          type="email"
-          class="form-control"
-          name="email"
-          placeholder="Your Email"
-          required=""
-        />
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            placeholder="Your Email"
+            required=""
+            id="contactEmail"
+          />
+          <label for="contactEmail">Your Email</label>
+        </div>
       </div>
 
       <div class="col-md-12">
-        <input
-          type="text"
-          class="form-control"
-          name="subject"
-          placeholder="Subject"
-          required=""
-        />
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            name="subject"
+            placeholder="Subject"
+            required=""
+            id="contactSubject"
+          />
+          <label for="contactSubject">Subject</label>
+        </div>
       </div>
 
       <div class="col-md-12">
-        <textarea
-          class="form-control"
-          name="message"
-          rows="6"
-          placeholder="Message"
-          required=""
-        ></textarea>
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            name="message"
+            rows="6"
+            placeholder="Message"
+            required=""
+            id="contactMessage"
+            style="height: 150px;"
+          ></textarea>
+          <label for="contactMessage">Message</label>
+        </div>
       </div>
 
       <div class="col-md-12 text-center">
-        <div class="loading">Loading</div>
-        <div class="error-message"></div>
-        <div class="sent-message">
+        <div class="loading" style="display: none;">Loading...</div>
+        <div class="error-message" style="display: none;"></div>
+        <div class="sent-message" style="display: none;">
           Your message has been sent. Thank you!
         </div>
 
-        <button type="submit">Send Message</button>
+        <button type="submit" class="btn-modern">Send Message</button>
       </div>
     </div>
   </form>
 </div>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const form = this;
+  const loading = form.querySelector('.loading');
+  const errorMessage = form.querySelector('.error-message');
+  const sentMessage = form.querySelector('.sent-message');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  
+  // Show loading state
+  loading.style.display = 'block';
+  errorMessage.style.display = 'none';
+  sentMessage.style.display = 'none';
+  submitBtn.disabled = true;
+  
+  try {
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    const response = await fetch('/api/forms/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      loading.style.display = 'none';
+      sentMessage.style.display = 'block';
+      form.reset();
+    } else {
+      loading.style.display = 'none';
+      errorMessage.textContent = result.message;
+      errorMessage.style.display = 'block';
+    }
+  } catch (error) {
+    loading.style.display = 'none';
+    errorMessage.textContent = 'An error occurred. Please try again later.';
+    errorMessage.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
+</script>

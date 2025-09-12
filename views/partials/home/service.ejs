@@ -2,10 +2,10 @@
 <section id="alt-services" class="alt-services section">
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
-    <h2>Our Services</h2>
-    <p>
-      Let RennyBlessed Construction be your trusted
-      partner for all your construction and engineering needs.
+    <h2 class="heading-modern">Our <span class="text-gradient">Expert Services</span></h2>
+    <p class="lead">
+      Comprehensive construction and engineering solutions tailored to meet your unique project requirements. 
+      From concept to completion, we deliver excellence in every detail.
     </p>
   </div>
   <!-- End Section Title -->
@@ -24,30 +24,33 @@
         data-aos="fade-up"
         data-aos-delay="200"
       >
-        <h3>Explore Our Expertise</h3>
-        <p>
-          we offer a wide range of professional services to cater to the diverse
-          needs of our clients. Our commitment to excellence ensures that every
-          project, no matter the scale, is executed with precision,
-          professionalism, and attention to detail.
+        <h3 class="heading-modern mb-4">Why Choose <span class="text-gradient">RB Construction?</span></h3>
+        <p class="lead mb-4">
+          With years of experience and a commitment to quality, we offer comprehensive 
+          construction and engineering services that exceed expectations. Our team combines 
+          technical expertise with innovative solutions to deliver projects that stand the test of time.
         </p>
 
         <% services.forEach(service => { %>
         <div
-          class="icon-box d-flex position-relative"
+          class="icon-box card-modern p-3 mb-3"
           data-aos="fade-up"
           data-aos-delay="300"
         >
-          <i class="flex-shrink-0"
-            ><img
-              height="50"
-              width="50"
-              src="<%= APP_URL %>/assets/uploads/services/<%= service.imageUrl %>"
-              alt="<%= service.title %>"
-          /></i>
-          <div>
-            <h4><a href="/services/<%= stringSlugify(service.title) %>" class="stretched-link"><%= service.title %></a></h4>
-            <p><%= stringLimiter(service.description, 100) %></p>
+          <div class="d-flex align-items-center">
+            <div class="service-icon me-3">
+              <img
+                height="60"
+                width="60"
+                src="<%= APP_URL %>/assets/uploads/services/<%= service.imageUrl %>"
+                alt="<%= service.title %>"
+                class="img-fluid"
+              />
+            </div>
+            <div class="service-content">
+              <h5 class="mb-2"><a href="/services/<%= stringSlugify(service.title) %>" class="text-decoration-none"><%= service.title %></a></h5>
+              <p class="mb-0 text-muted"><%= stringLimiter(service.description, 80) %></p>
+            </div>
           </div>
         </div>
         <% }) %>

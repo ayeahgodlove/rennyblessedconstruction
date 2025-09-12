@@ -2,9 +2,10 @@
 <section id="projects" class="projects section">
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
-    <h2>Our Projects</h2>
-    <p>
-      Showcasing Our Commitment to Excellence in Construction and Engineering.
+    <h2 class="heading-modern">Our <span class="text-gradient">Portfolio</span></h2>
+    <p class="lead">
+      Showcasing our commitment to excellence through innovative construction and engineering projects 
+      that have transformed communities across Cameroon.
     </p>
   </div>
   <!-- End Section Title -->
@@ -34,36 +35,276 @@
         data-aos="fade-up"
         data-aos-delay="200"
       >
-        <% pictures.forEach(picture => { %>
-        <div
-          class="col-lg-4 col-md-6 portfolio-item isotope-item filter-remodeling"
-        >
-          <div class="portfolio-content h-100">
-            <img
-              src="<%= APP_URL %>/assets/uploads/pictures/<%= picture.imageUrl %>"
-              class="img-fluid"
-              alt=""
-            />
-            <div class="portfolio-info">
-              <h4><%= picture.title %></h4>
-              <!-- <p><%= getProject(picture.projectId).title %></p> -->
-              <a
-                href="<%= APP_URL %>/assets/uploads/pictures/<%= picture.imageUrl %>"
-                title="<%= picture.title %>"
-                data-gallery="portfolio-gallery-app"
-                class="glightbox preview-link"
-                ><i class="bi bi-zoom-in"></i
-              ></a>
-              <a
-                href="/projects/<%= stringSlugify(picture.title) %>"
-                title="More Details"
-                class="details-link"
-                ><i class="bi bi-link-45deg"></i
-              ></a>
+        <!-- Project 1: Residential Villa -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-construction">
+          <div class="portfolio-content h-100 card-modern overflow-hidden">
+            <div class="position-relative">
+              <img
+                src="/assets/img/projects-dir/IMG_20221028_163043_993.jpg"
+                class="img-fluid w-100"
+                alt="Modern Residential Villa Construction"
+                style="height: 300px; object-fit: cover;"
+              />
+              <div class="portfolio-info">
+                <h5 class="mb-2">Modern Residential Villa</h5>
+                <p class="mb-2 small">Bamenda, Cameroon</p>
+                <div class="portfolio-actions">
+                  <a
+                    href="/assets/img/projects-dir/IMG_20221028_163043_993.jpg"
+                    title="Modern Residential Villa Construction"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link btn btn-light btn-sm me-2"
+                    ><i class="bi bi-zoom-in me-1"></i>View</a
+                  >
+                  <a
+                    href="/projects"
+                    title="More Details"
+                    class="details-link btn btn-warning btn-sm"
+                    ><i class="bi bi-arrow-right me-1"></i>Details</a
+                  >
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <% }) %>
+        <!-- End Portfolio Item -->
+
+        <!-- Project 2: Commercial Building -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-construction">
+          <div class="portfolio-content h-100 card-modern overflow-hidden">
+            <div class="position-relative">
+              <img
+                src="/assets/img/projects-dir/IMG_20230401_173224_883.jpg"
+                class="img-fluid w-100"
+                alt="Commercial Office Building"
+                style="height: 300px; object-fit: cover;"
+              />
+              <div class="portfolio-info">
+                <h5 class="mb-2">Commercial Office Building</h5>
+                <p class="mb-2 small">Nkwen Business District</p>
+                <div class="portfolio-actions">
+                  <a
+                    href="/assets/img/projects-dir/IMG_20230401_173224_883.jpg"
+                    title="Commercial Office Building"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link btn btn-light btn-sm me-2"
+                    ><i class="bi bi-zoom-in me-1"></i>View</a
+                  >
+                  <a
+                    href="/projects"
+                    title="More Details"
+                    class="details-link btn btn-warning btn-sm"
+                    ><i class="bi bi-arrow-right me-1"></i>Details</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Portfolio Item -->
+
+        <!-- Project 3: Architectural Design -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-design">
+          <div class="portfolio-content h-100 card-modern overflow-hidden">
+            <div class="position-relative">
+              <img
+                src="/assets/img/projects-dir/IMG_20230624_133725_621.jpg"
+                class="img-fluid w-100"
+                alt="Residential Complex Design"
+                style="height: 300px; object-fit: cover;"
+              />
+              <div class="portfolio-info">
+                <h5 class="mb-2">Residential Complex Design</h5>
+                <p class="mb-2 small">Multi-Unit Housing Project</p>
+                <div class="portfolio-actions">
+                  <a
+                    href="/assets/img/projects-dir/IMG_20230624_133725_621.jpg"
+                    title="Residential Complex Design"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link btn btn-light btn-sm me-2"
+                    ><i class="bi bi-zoom-in me-1"></i>View</a
+                  >
+                  <a
+                    href="/projects"
+                    title="More Details"
+                    class="details-link btn btn-warning btn-sm"
+                    ><i class="bi bi-arrow-right me-1"></i>Details</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Portfolio Item -->
+
+        <!-- Project 4: Home Renovation -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-remodeling">
+          <div class="portfolio-content h-100 card-modern overflow-hidden">
+            <div class="position-relative">
+              <img
+                src="/assets/img/projects-dir/IMG_20230624_140208_901.jpg"
+                class="img-fluid w-100"
+                alt="Complete Home Renovation"
+                style="height: 300px; object-fit: cover;"
+              />
+              <div class="portfolio-info">
+                <h5 class="mb-2">Complete Home Renovation</h5>
+                <p class="mb-2 small">Traditional to Modern Transformation</p>
+                <div class="portfolio-actions">
+                  <a
+                    href="/assets/img/projects-dir/IMG_20230624_140208_901.jpg"
+                    title="Complete Home Renovation"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link btn btn-light btn-sm me-2"
+                    ><i class="bi bi-zoom-in me-1"></i>View</a
+                  >
+                  <a
+                    href="/projects"
+                    title="More Details"
+                    class="details-link btn btn-warning btn-sm"
+                    ><i class="bi bi-arrow-right me-1"></i>Details</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Portfolio Item -->
+
+        <!-- Project 5: School Construction -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-construction">
+          <div class="portfolio-content h-100 card-modern overflow-hidden">
+            <div class="position-relative">
+              <img
+                src="/assets/img/projects-dir/IMG_20230718_143744_352.jpg"
+                class="img-fluid w-100"
+                alt="Educational Facility Construction"
+                style="height: 300px; object-fit: cover;"
+              />
+              <div class="portfolio-info">
+                <h5 class="mb-2">Educational Facility</h5>
+                <p class="mb-2 small">Primary School Construction</p>
+                <div class="portfolio-actions">
+                  <a
+                    href="/assets/img/projects-dir/IMG_20230718_143744_352.jpg"
+                    title="Educational Facility Construction"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link btn btn-light btn-sm me-2"
+                    ><i class="bi bi-zoom-in me-1"></i>View</a
+                  >
+                  <a
+                    href="/projects"
+                    title="More Details"
+                    class="details-link btn btn-warning btn-sm"
+                    ><i class="bi bi-arrow-right me-1"></i>Details</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Portfolio Item -->
+
+        <!-- Project 6: Structural Engineering -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-design">
+          <div class="portfolio-content h-100 card-modern overflow-hidden">
+            <div class="position-relative">
+              <img
+                src="/assets/img/projects-dir/IMG_20230920_121936_316.jpg"
+                class="img-fluid w-100"
+                alt="Structural Engineering Project"
+                style="height: 300px; object-fit: cover;"
+              />
+              <div class="portfolio-info">
+                <h5 class="mb-2">Structural Engineering</h5>
+                <p class="mb-2 small">Foundation & Framework Design</p>
+                <div class="portfolio-actions">
+                  <a
+                    href="/assets/img/projects-dir/IMG_20230920_121936_316.jpg"
+                    title="Structural Engineering Project"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link btn btn-light btn-sm me-2"
+                    ><i class="bi bi-zoom-in me-1"></i>View</a
+                  >
+                  <a
+                    href="/projects"
+                    title="More Details"
+                    class="details-link btn btn-warning btn-sm"
+                    ><i class="bi bi-arrow-right me-1"></i>Details</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Portfolio Item -->
+
+        <!-- Project 7: Church Construction -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-construction">
+          <div class="portfolio-content h-100 card-modern overflow-hidden">
+            <div class="position-relative">
+              <img
+                src="/assets/img/projects-dir/IMG_20240104_100618_570.jpg"
+                class="img-fluid w-100"
+                alt="Religious Building Construction"
+                style="height: 300px; object-fit: cover;"
+              />
+              <div class="portfolio-info">
+                <h5 class="mb-2">Religious Building</h5>
+                <p class="mb-2 small">Community Church Construction</p>
+                <div class="portfolio-actions">
+                  <a
+                    href="/assets/img/projects-dir/IMG_20240104_100618_570.jpg"
+                    title="Religious Building Construction"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link btn btn-light btn-sm me-2"
+                    ><i class="bi bi-zoom-in me-1"></i>View</a
+                  >
+                  <a
+                    href="/projects"
+                    title="More Details"
+                    class="details-link btn btn-warning btn-sm"
+                    ><i class="bi bi-arrow-right me-1"></i>Details</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Portfolio Item -->
+
+        <!-- Project 8: Kitchen Remodeling -->
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-remodeling">
+          <div class="portfolio-content h-100 card-modern overflow-hidden">
+            <div class="position-relative">
+              <img
+                src="/assets/img/projects-dir/IMG_20240115_115556_042.jpg"
+                class="img-fluid w-100"
+                alt="Modern Kitchen Remodeling"
+                style="height: 300px; object-fit: cover;"
+              />
+              <div class="portfolio-info">
+                <h5 class="mb-2">Modern Kitchen Remodeling</h5>
+                <p class="mb-2 small">Contemporary Design Upgrade</p>
+                <div class="portfolio-actions">
+                  <a
+                    href="/assets/img/projects-dir/IMG_20240115_115556_042.jpg"
+                    title="Modern Kitchen Remodeling"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link btn btn-light btn-sm me-2"
+                    ><i class="bi bi-zoom-in me-1"></i>View</a
+                  >
+                  <a
+                    href="/projects"
+                    title="More Details"
+                    class="details-link btn btn-warning btn-sm"
+                    ><i class="bi bi-arrow-right me-1"></i>Details</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- End Portfolio Item -->
       </div>
       <!-- End Portfolio Container -->

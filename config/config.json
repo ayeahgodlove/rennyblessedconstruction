@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "admin@2022",
+    "username": "root",
+    "password": null,
     "database": "rennyblessed_db",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "host": "localhost",
+    "dialect": "mysql"
   },
   "test": {
-    "username": "postgres",
-    "password": "your_postgres_password",
+    "username": "root",
+    "password": null,
     "database": "rennyblessed_db",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "host": "localhost",
+    "dialect": "mysql"
   },
   "production": {
-    "username": "postgres",
-    "password": "your_postgres_password",
-    "database": "rennyblessed_db",
+    "username": "globowic_mellycrochet",
+    "password": "Admin@2024",
+    "database": "globowic_rennyblessed_db",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "mysql"
   }
 }

@@ -1,11 +1,13 @@
+// sequelize.ts
 const { Sequelize, DataTypes } = require("sequelize");
 const config = require("../config/config.json");
+
+const mysql2 = require("mysql2");
 
 // Determine the environment
 const env = process.env.NODE_ENV || "development";
 const configEnv = config[env];
 
-// Initialize Sequelize
 const sequelize = new Sequelize(
   configEnv.database,
   configEnv.username,
@@ -13,21 +15,20 @@ const sequelize = new Sequelize(
   {
     host: configEnv.host,
     dialect: configEnv.dialect,
+    dialectModule: mysql2,
+    benchmark: true,
+    port: parseInt(process.env.MYSQL_PORT, 10) || 3306,
   }
 );
 
-async function dbAuthenticate() {
+(async () => {
   try {
     await sequelize.authenticate();
-    sequelize.sync().then(() => {
-      console.log("Database & tables created!");
-    });
-
-    console.log("Connection has been established successfully.");
+    await sequelize.sync();
+    console.log("Database connected successfully.");
   } catch (error) {
-    console.error("Unable to connect to the database:", error);
+    console.error("Database connection failed", error);
   }
-}
+})();
 
-// Export the sequelize instance and DataTypes for model definition
-module.exports = { sequelize, DataTypes, dbAuthenticate };
+module.exports = { sequelize, DataTypes };

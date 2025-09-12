@@ -1,61 +1,129 @@
 <div class="col-lg-5" data-aos="zoom-out" data-aos-delay="200">
-  <form action="forms/quote.php" method="post" class="php-email-form">
-    <h3>Get a quote</h3>
-    <p>
-      Great buildings are not just about bricks and mortar, they are about the
-      vision, innovation, and dedication that bring them to life
-    </p>
-    <div class="row gy-3">
-      <div class="col-12">
-        <input
-          type="text"
-          name="name"
-          class="form-control"
-          placeholder="Name"
-          required=""
-        />
-      </div>
-
-      <div class="col-12">
-        <input
-          type="email"
-          class="form-control"
-          name="email"
-          placeholder="Email"
-          required=""
-        />
-      </div>
-
-      <div class="col-12">
-        <input
-          type="text"
-          class="form-control"
-          name="phone"
-          placeholder="Phone"
-          required=""
-        />
-      </div>
-
-      <div class="col-12">
-        <textarea
-          class="form-control"
-          name="message"
-          rows="6"
-          placeholder="Message"
-          required=""
-        ></textarea>
-      </div>
-
-      <div class="col-12 text-center">
-        <div class="loading">Loading</div>
-        <div class="error-message"></div>
-        <div class="sent-message">
-          Your quote request has been sent successfully. Thank you!
+  <div class="card-modern p-4">
+    <form id="quoteForm" class="php-email-form">
+      <h3 class="heading-modern mb-3">Get Your <span class="text-gradient">Free Quote</span></h3>
+      <p class="mb-4">
+        Ready to start your project? Fill out the form below and our team will get back to you 
+        within 24 hours with a detailed quote tailored to your needs.
+      </p>
+      <div class="row gy-3">
+        <div class="col-12">
+          <div class="form-floating">
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              placeholder="Your Name"
+              required=""
+              id="quoteName"
+            />
+            <label for="quoteName">Your Name</label>
+          </div>
         </div>
 
-        <button type="submit">Get a quote</button>
+        <div class="col-12">
+          <div class="form-floating">
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              placeholder="Your Email"
+              required=""
+              id="quoteEmail"
+            />
+            <label for="quoteEmail">Your Email</label>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              name="phone"
+              placeholder="Your Phone"
+              required=""
+              id="quotePhone"
+            />
+            <label for="quotePhone">Your Phone</label>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-floating">
+            <textarea
+              class="form-control"
+              name="message"
+              rows="4"
+              placeholder="Project Details"
+              required=""
+              id="quoteMessage"
+              style="height: 120px;"
+            ></textarea>
+            <label for="quoteMessage">Project Details</label>
+          </div>
+        </div>
+
+        <div class="col-12 text-center">
+          <div class="loading" style="display: none;">Loading...</div>
+          <div class="error-message" style="display: none;"></div>
+          <div class="sent-message" style="display: none;">
+            Your quote request has been sent successfully. Thank you!
+          </div>
+
+          <button type="submit" class="btn-modern w-100">Get Free Quote</button>
+        </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
+
+<script>
+document.getElementById('quoteForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  const form = this;
+  const loading = form.querySelector('.loading');
+  const errorMessage = form.querySelector('.error-message');
+  const sentMessage = form.querySelector('.sent-message');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  
+  // Show loading state
+  loading.style.display = 'block';
+  errorMessage.style.display = 'none';
+  sentMessage.style.display = 'none';
+  submitBtn.disabled = true;
+  
+  try {
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    const response = await fetch('/api/forms/quote', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      loading.style.display = 'none';
+      sentMessage.style.display = 'block';
+      form.reset();
+    } else {
+      loading.style.display = 'none';
+      errorMessage.textContent = result.message;
+      errorMessage.style.display = 'block';
+    }
+  } catch (error) {
+    loading.style.display = 'none';
+    errorMessage.textContent = 'An error occurred. Please try again later.';
+    errorMessage.style.display = 'block';
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
+</script>
 <!-- End Quote Form -->
