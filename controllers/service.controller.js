@@ -1,9 +1,22 @@
 const Service = require("../models/service");
 
+// Small in-memory cache for frequently requested page data.
+const ALL_SERVICES_CACHE_TTL_MS = 30_000;
+let allServicesCache = { data: null, expiresAt: 0 };
+
 class ServicesController {
   async getAllServices() {
     try {
+      const now = Date.now();
+      if (allServicesCache.data && now < allServicesCache.expiresAt) {
+        return allServicesCache.data;
+      }
+
       const services = await Service.findAll();
+      allServicesCache = {
+        data: services,
+        expiresAt: now + ALL_SERVICES_CACHE_TTL_MS,
+      };
       return services;
     } catch (error) {
       throw error;
@@ -25,7 +38,6 @@ class ServicesController {
   async getServiceByTitle(title) {
     try {
       const service = await Service.findOne({ where: { title } });
-      console.log("service: ", service, title)
       if (!service) {
         throw Error("Service not found!");
       }
@@ -38,6 +50,7 @@ class ServicesController {
   async createService(service) {
     try {
       const createdService = await Service.create(service);
+      allServicesCache = { data: null, expiresAt: 0 };
       return createdService;
     } catch (error) {
       throw error;
@@ -53,6 +66,7 @@ class ServicesController {
         throw Error("Service not found!");
       }
       const updatedService = await service.update(serviceData);
+      allServicesCache = { data: null, expiresAt: 0 };
       return updatedService;
     } catch (error) {
       throw error;
@@ -66,6 +80,7 @@ class ServicesController {
         throw new Error("Service not found");
       }
       await service.destroy();
+      allServicesCache = { data: null, expiresAt: 0 };
       return { message: "Service deleted successfully" };
     } catch (error) {
       throw error;

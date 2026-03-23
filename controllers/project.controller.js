@@ -1,14 +1,28 @@
 const Project = require("../models/project");
 const Picture = require("../models/picture");
+
+const ALL_PROJECTS_CACHE_TTL_MS = 30_000;
+let allProjectsCache = { data: null, expiresAt: 0 };
+
 class ProjectsController {
   async getAllProjects() {
     try {
+      const now = Date.now();
+      if (allProjectsCache.data && now < allProjectsCache.expiresAt) {
+        return allProjectsCache.data;
+      }
+
       const projects = await Project.findAll({
         include: {
           model: Picture,
           as: "pictures", // The alias defined in your association (if applicable)
         },
       });
+
+      allProjectsCache = {
+        data: projects,
+        expiresAt: now + ALL_PROJECTS_CACHE_TTL_MS,
+      };
       return projects;
     } catch (error) {
       throw error;
@@ -45,6 +59,7 @@ class ProjectsController {
   async createProject(project) {
     try {
       const createdProject = await Project.create(project);
+      allProjectsCache = { data: null, expiresAt: 0 };
       return createdProject;
     } catch (error) {
       throw error;
@@ -65,6 +80,7 @@ class ProjectsController {
         throw Error("Project not found!");
       }
       const updatedProject = await project.update(projectData);
+      allProjectsCache = { data: null, expiresAt: 0 };
       return updatedProject;
     } catch (error) {
       throw error;
@@ -83,6 +99,7 @@ class ProjectsController {
         throw new Error("Project not found");
       }
       await project.destroy();
+      allProjectsCache = { data: null, expiresAt: 0 };
       return { message: "Project deleted successfully" };
     } catch (error) {
       throw error;

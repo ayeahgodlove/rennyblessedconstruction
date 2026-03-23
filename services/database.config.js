@@ -16,7 +16,11 @@ const sequelize = new Sequelize(
     host: configEnv.host,
     dialect: configEnv.dialect,
     dialectModule: mysql2,
-    benchmark: true,
+    // `benchmark: true` prints `Executed (default): ...` for every query and
+    // can significantly slow down page loads.
+    benchmark: false,
+    // Prevent per-query SQL logging (faster + cleaner console).
+    logging: false,
     port: parseInt(process.env.MYSQL_PORT, 10) || 3306,
   }
 );

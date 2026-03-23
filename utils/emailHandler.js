@@ -13,7 +13,8 @@ const emailConfig = {
 // Create transporter with error handling
 let transporter;
 try {
-  transporter = nodemailer.createTransporter(emailConfig);
+  // Nodemailer uses `createTransport` (not `createTransporter`)
+  transporter = nodemailer.createTransport(emailConfig);
 } catch (error) {
   console.error('Error creating email transporter:', error);
 }

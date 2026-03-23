@@ -29,11 +29,14 @@ const picturesController = new PicturesController();
 const categoriesController = new CategoriesController();
 
 pagesRouter.get("/", async (req, res) => {
-  const testimonials = await testimonialsController.getAllTestimonials();
-  const services = await servicesController.getAllServices();
-  const projects = await projectsController.getAllProjects();
-  const pictures = await picturesController.getAllPictures();
-  const getProject = await projectsController.getProject;
+  const [testimonials, services, projects, pictures] = await Promise.all([
+    testimonialsController.getAllTestimonials(),
+    servicesController.getAllServices(),
+    projectsController.getAllProjects(),
+    picturesController.getAllPictures(),
+  ]);
+  // Passed into templates (currently expected as a function reference)
+  const getProject = projectsController.getProject;
 
   res.render("pages/index", {
     title: "RB Construction & Engineering - Professional Construction Services in Cameroon",
@@ -54,10 +57,12 @@ pagesRouter.get("/", async (req, res) => {
 });
 
 pagesRouter.get("/about-us", async (req, res) => {
-  const services = await servicesController.getAllServices();
-  const teams = await teamsController.getAllTeams();
-  const testimonials = await testimonialsController.getAllTestimonials();
-  const projects = await projectsController.getAllProjects();
+  const [services, teams, testimonials, projects] = await Promise.all([
+    servicesController.getAllServices(),
+    teamsController.getAllTeams(),
+    testimonialsController.getAllTestimonials(),
+    projectsController.getAllProjects(),
+  ]);
 
   const teamCount = teams.length;
   const testimonialCount = testimonials.length;
@@ -84,10 +89,12 @@ pagesRouter.get("/about-us", async (req, res) => {
 });
 
 pagesRouter.get("/projects", async (req, res) => {
-  const projects = await projectsController.getAllProjects();
-  const getProject = await projectsController.getProject;
-  const pictures = await picturesController.getAllPictures();
-  const services = await servicesController.getAllServices();
+  const [projects, pictures, services] = await Promise.all([
+    projectsController.getAllProjects(),
+    picturesController.getAllPictures(),
+    servicesController.getAllServices(),
+  ]);
+  const getProject = projectsController.getProject;
 
   res.render("pages/project", {
     title: "Our Construction Projects - RB Construction Portfolio",
@@ -109,17 +116,17 @@ pagesRouter.get("/projects", async (req, res) => {
 });
 
 pagesRouter.get("/projects/:slug", async (req, res) => {
-  const projects = await projectsController.getAllProjects();
   const { slug } = req.params;
   const title = deSlugify(slug);
+  const [projects, project, pictures, services] = await Promise.all([
+    projectsController.getAllProjects(),
+    projectsController.getProjectByTitle(title),
+    picturesController.getAllPictures(),
+    servicesController.getAllServices(),
+  ]);
+  const getCategory = categoriesController.getCategory;
 
-  const project = await projectsController.getProjectByTitle(title);
-  const pictures = await picturesController.getAllPictures();
-  const services = await servicesController.getAllServices();
-  const getCategory =  await categoriesController.getCategory;
-
-
-  const projectPictures =  pictures.filter(p => p.projectId === project.id)
+  const projectPictures = pictures.filter((p) => p.projectId === project.id);
 
   res.render("pages/project-details", {
     pageTitle: "Projects",
@@ -153,8 +160,10 @@ pagesRouter.get("/contact-us", async (req, res) => {
 });
 
 pagesRouter.get("/services", async (req, res) => {
-  const services = await servicesController.getAllServices();
-  const testimonials = await testimonialsController.getAllTestimonials();
+  const [services, testimonials] = await Promise.all([
+    servicesController.getAllServices(),
+    testimonialsController.getAllTestimonials(),
+  ]);
   res.render("pages/services", {
     title: "Construction Services - RB Construction & Engineering Solutions",
     description: "RB Construction offers comprehensive construction and engineering services in Cameroon including architectural design, structural engineering, project management, and building construction.",
@@ -175,11 +184,11 @@ pagesRouter.get("/services", async (req, res) => {
 pagesRouter.get("/services/:slug", async (req, res) => {
   const { slug } = req.params;
   const title = deSlugify(slug);
-  const services = await servicesController.getAllServices();
-  const service = await servicesController.getServiceByTitle(title);
-  const testimonials = await testimonialsController.getAllTestimonials();
-
-  console.log("title: ", title)
+  const [services, service, testimonials] = await Promise.all([
+    servicesController.getAllServices(),
+    servicesController.getServiceByTitle(title),
+    testimonialsController.getAllTestimonials(),
+  ]);
   res.render("pages/service-details", {
     pageTitle: "Services",
     uri: "Service",
@@ -192,8 +201,10 @@ pagesRouter.get("/services/:slug", async (req, res) => {
 });
 
 pagesRouter.get("/testimonials", async (req, res) => {
-  const testimonials = await testimonialsController.getAllTestimonials();
-  const services = await servicesController.getAllServices();
+  const [testimonials, services] = await Promise.all([
+    testimonialsController.getAllTestimonials(),
+    servicesController.getAllServices(),
+  ]);
   res.render("pages/testimony", {
     pageTitle: "Testimonials",
     uri: "Testimonial",
